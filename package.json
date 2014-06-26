@@ -1,0 +1,28 @@
+{
+  "name": "js-data-structures",
+  "version": "0.0.0",
+  "description": "A collection of data structures written in JavaScript.",
+  "devDependencies": {
+    "jasmine-node": "~1.14.3"
+  },
+  "scripts": {
+    "test": "jasmine-node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tyriar/js-data-structures.git"
+  },
+  "keywords": [
+    "algorithm",
+    "computer science",
+    "data structure",
+    "heap",
+    "tree"
+  ],
+  "author": "Daniel Imms (http://www.growingwiththeweb.com)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Tyriar/js-data-structures/issues"
+  },
+  "homepage": "https://github.com/Tyriar/js-data-structures"
+}

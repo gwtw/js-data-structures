@@ -1,0 +1,27 @@
+{
+  "name": "js-sorting",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Tyriar/js-data-structures",
+  "authors": [
+    "Daniel Imms (http://www.growingwiththeweb.com)"
+  ],
+  "description": "A collection of data structures written in JavaScript.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "algorithm",
+    "computer science",
+    "sorting"
+  ],
+  "license": "BSD-2-clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
