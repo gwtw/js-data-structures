@@ -1,6 +1,6 @@
 {
   "name": "js-data-structures",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "A collection of data structures written in JavaScript.",
   "devDependencies": {
     "jasmine-node": "~1.14.3"

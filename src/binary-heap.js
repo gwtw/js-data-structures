@@ -28,6 +28,24 @@
     }
   };
 
+  BinaryHeap.prototype.decreaseKey = function (node, newKey) {
+    node.key = newKey;
+    var parent = getParent(node.i);
+    while (compare(node, this.list[parent]) < 0) {
+      swap(this.list, node.i, parent);
+      parent = getParent(node.i);
+    }
+  };
+
+  BinaryHeap.prototype.delete = function (node) {
+    // Bubble up to the root and extract
+    while (node.i > 0) {
+      var parent = getParent(node.i);
+      swap(this.list, node.i, parent);
+    }
+    this.extractMinimum();
+  };
+
   BinaryHeap.prototype.extractMinimum = function () {
     if (!this.list.length) {
       return undefined;
@@ -61,15 +79,17 @@
     }
   };
 
-  BinaryHeap.prototype.insert = function (key) {
+  BinaryHeap.prototype.insert = function (key, value) {
     var i = this.list.length;
-    this.list.push(key);
+    var node = new Node(key, value, i);
+    this.list.push(node);
     var parent = getParent(i);
     while (parent != i && compare(this.list[i], this.list[parent]) < 0) {
       swap(this.list, i, parent);
       i = parent;
       parent = getParent(i);
     }
+    return node;
   };
 
   BinaryHeap.prototype.isEmpty = function () {
@@ -84,11 +104,14 @@
     var temp = array[a];
     array[a] = array[b];
     array[b] = temp;
+    var tempI = array[a].i;
+    array[a].i = array[b].i;
+    array[b].i = tempI;
   }
 
   function compare(a, b) {
-    if (a > b) return 1;
-    if (a < b) return -1;
+    if (a.key > b.key) return 1;
+    if (a.key < b.key) return -1;
     return 0;
   }
 
@@ -102,6 +125,12 @@
 
   function getRight(i) {
     return 2 * i + 1;
+  }
+
+  function Node(key, value, i) {
+    this.key = key;
+    this.value = value;
+    this.i = i; // index needs to be tracked for decreaseKey and delete
   }
 
   return BinaryHeap;
