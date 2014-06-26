@@ -9,28 +9,23 @@ describe("binary-heap", function () {
 
   describe("insert", function () {
     it("should insert items into the heap", function () {
-      expect(heap.size()).toBe(0);
       heap.insert(1, null);
-      expect(heap.size()).toBe(1);
       heap.insert(2, null);
-      expect(heap.size()).toBe(2);
       heap.insert(3, null);
-      expect(heap.size()).toBe(3);
       heap.insert(4, null);
-      expect(heap.size()).toBe(4);
       heap.insert(5, null);
       expect(heap.size()).toBe(5);
     });
 
     it("should return the inserted node", function () {
-      var ret = heap.insert(1, 2);
+      var ret = heap.insert(1, { 'foo': 'bar' });
       expect(ret.key).toEqual(1);
-      expect(ret.value).toEqual(2);
+      expect(ret.value).toEqual({ 'foo': 'bar' });
     });
   });
 
   describe("extractMinimum", function () {
-    it("Should extract the minimum item from the heap", function () {
+    it("should extract the minimum item from a heap", function () {
       var node5 = heap.insert(5, null);
       var node3 = heap.insert(3, null);
       var node4 = heap.insert(4, null);
@@ -43,7 +38,7 @@ describe("binary-heap", function () {
       expect(heap.extractMinimum()).toEqual(node5);
     });
 
-    it("Should extract the minimum item from a heap containing negative items", function () {
+    it("should extract the minimum item from a heap containing negative items", function () {
       var node1 = heap.insert(-9, null);
       var node4 = heap.insert(6, null);
       var node3 = heap.insert(3, null);
@@ -123,7 +118,9 @@ describe("binary-heap", function () {
       var node2 = heap.insert(3, null);
       var node1 = heap.insert(-6, null);
       var node5 = heap.insert(27, null);
+      expect(heap.size()).toBe(5);
       heap.delete(node3);
+      expect(heap.size()).toBe(4);
       expect(heap.extractMinimum()).toEqual(node1);
       expect(heap.extractMinimum()).toEqual(node2);
       expect(heap.extractMinimum()).toEqual(node4);
@@ -131,4 +128,101 @@ describe("binary-heap", function () {
       expect(heap.isEmpty()).toBe(true);
     });
   });
+
+  describe("buildHeap", function () {
+    it("should replace old heap with new array", function () {
+      heap.insert(2, null);
+      heap.insert(3, null);
+      heap.insert(1, null);
+      expect(heap.size()).toBe(3);
+      heap.buildHeap([9,8,7,6,5,4], [null,null,null,null,null,null]);
+      expect(heap.size()).toBe(6);
+      expect(heap.extractMinimum().key).toBe(4);
+      expect(heap.extractMinimum().key).toBe(5);
+      expect(heap.extractMinimum().key).toBe(6);
+      expect(heap.extractMinimum().key).toBe(7);
+      expect(heap.extractMinimum().key).toBe(8);
+      expect(heap.extractMinimum().key).toBe(9);
+      expect(heap.isEmpty()).toBe(true);
+    });
+  });
+
+  describe("union", function () {
+    it("should union two heaps together", function () {
+      heap.insert(9, null);
+      heap.insert(10, null);
+      heap.insert(6, null);
+      heap.insert(3, null);
+      heap.insert(4, null);
+      var other = new BinaryHeap();
+      other.insert(5, null);
+      other.insert(7, null);
+      other.insert(2, null);
+      other.insert(8, null);
+      other.insert(1, null);
+      expect(heap.size()).toBe(5);
+      expect(other.size()).toBe(5);
+      heap.union(other);
+      expect(heap.size()).toBe(10);
+      for (i = 1; i <= 10; i++) {
+        expect(heap.extractMinimum().key).toBe(i);
+      }
+      expect(heap.isEmpty()).toBe(true);
+    });
+  });
+
+  describe("with non-reverse customCompare", function () {
+    it("should give a min heap", function () {
+      heap = new BinaryHeap(function (a, b) {
+        return a.key - b.key;
+      });
+      var node3 = heap.insert(13, null);
+      var node4 = heap.insert(26, null);
+      var node2 = heap.insert(3, null);
+      var node1 = heap.insert(-6, null);
+      var node5 = heap.insert(27, null);
+      expect(heap.size()).toBe(5);
+      expect(heap.extractMinimum()).toEqual(node1);
+      expect(heap.extractMinimum()).toEqual(node2);
+      expect(heap.extractMinimum()).toEqual(node3);
+      expect(heap.extractMinimum()).toEqual(node4);
+      expect(heap.extractMinimum()).toEqual(node5);
+      expect(heap.isEmpty()).toBe(true);
+    });
+  });
+
+  describe("with reverse customCompare", function () {
+    it("should give a max heap", function () {
+      heap = new BinaryHeap(function (a, b) {
+        return b.key - a.key;
+      });
+      var node3 = heap.insert(13, null);
+      var node4 = heap.insert(26, null);
+      var node2 = heap.insert(3, null);
+      var node1 = heap.insert(-6, null);
+      var node5 = heap.insert(27, null);
+      expect(heap.size()).toBe(5);
+      expect(heap.extractMinimum()).toEqual(node5);
+      expect(heap.extractMinimum()).toEqual(node4);
+      expect(heap.extractMinimum()).toEqual(node3);
+      expect(heap.extractMinimum()).toEqual(node2);
+      expect(heap.extractMinimum()).toEqual(node1);
+      expect(heap.isEmpty()).toBe(true);
+    });
+  });
+
+  it("should work with string keys", function () {
+    var node3 = heap.insert('f', null);
+    var node4 = heap.insert('o', null);
+    var node2 = heap.insert('c', null);
+    var node1 = heap.insert('a', null);
+    var node5 = heap.insert('q', null);
+    expect(heap.size()).toBe(5);
+    expect(heap.extractMinimum()).toEqual(node1);
+    expect(heap.extractMinimum()).toEqual(node2);
+    expect(heap.extractMinimum()).toEqual(node3);
+    expect(heap.extractMinimum()).toEqual(node4);
+    expect(heap.extractMinimum()).toEqual(node5);
+    expect(heap.isEmpty()).toBe(true);
+  })
 });

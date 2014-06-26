@@ -24,7 +24,7 @@ describe("binomial-heap", function () {
   });
 
   describe("extractMinimum", function () {
-    it("Should extract the minimum item from the heap", function () {
+    it("should extract the minimum item from the heap", function () {
       heap.insert(5);
       heap.insert(3);
       heap.insert(4);
@@ -37,7 +37,7 @@ describe("binomial-heap", function () {
       expect(heap.extractMinimum()).toBe(5);
     });
 
-    it("Should extract the minimum item from a heap containing negative items", function () {
+    it("should extract the minimum item from a heap containing negative items", function () {
       heap.insert(-9);
       heap.insert(6);
       heap.insert(3);

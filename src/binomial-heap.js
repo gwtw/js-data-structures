@@ -1,4 +1,4 @@
-// Explanation: http://www.growingwiththeweb.com/2013/01/data-structure-binary-heap.html
+// Explanation: http://www.growingwiththeweb.com/2014/01/binomial-heap.html
 //
 // Complexity (n=input size):
 //   Extract minimum: O(log n)

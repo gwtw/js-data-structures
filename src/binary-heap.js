@@ -1,9 +1,15 @@
 // Explanation: http://www.growingwiththeweb.com/2013/01/data-structure-binary-heap.html
 //
 // Complexity (n=input size):
-//   Extract minimum: O(log n)
-//   Find minimum:    O(1)
-//   Insert:          O(log n)
+//   buildHeap:      O(n)
+//   decreaseKey:    O(log n)
+//   delete:         O(log n)
+//   extractMinimum: O(log n)
+//   findMinimum:    O(1)
+//   insert:         O(log n)
+//   isEmpty:        O(1)
+//   size:           O(1)
+//   union:          O(n)
 
 // UMD pattern: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
 (function (root, factory) {
@@ -20,6 +26,7 @@
 }(this, function () {
   'use strict';
 
+  // Creates a new binary heap with an optional customCompare.
   var BinaryHeap = function (customCompare) {
     this.list = [];
 
@@ -28,10 +35,26 @@
     }
   };
 
+  // Builds a heap with the provided key and value arrays, note that this
+  // completely discards the old heap.
+  BinaryHeap.prototype.buildHeap = function (keyArray, valueArray) {
+    if (keyArray.length != valueArray.length) {
+      throw "Key array must be the same length as value array";
+    }
+
+    var nodeArray = [];
+
+    for (var i = 0; i < keyArray.length; i++) {
+      nodeArray.push(new Node(keyArray[i], valueArray[i], i));
+    }
+
+    buildHeapFromNodeArray(this, nodeArray);
+  };
+
   BinaryHeap.prototype.decreaseKey = function (node, newKey) {
     node.key = newKey;
     var parent = getParent(node.i);
-    while (compare(node, this.list[parent]) < 0) {
+    while (this.compare(node, this.list[parent]) < 0) {
       swap(this.list, node.i, parent);
       parent = getParent(node.i);
     }
@@ -55,7 +78,7 @@
     }
     var min = this.list[0];
     this.list[0] = this.list.pop();
-    this.heapify(0);
+    heapify(this, 0);
     return min;
   };
 
@@ -63,28 +86,12 @@
     return this.isEmpty() ? undefined : this.list[0];
   };
 
-  BinaryHeap.prototype.heapify = function (i) {
-    var l = getLeft(i);
-    var r = getRight(i);
-    var smallest = i;
-    if (l < this.list.length && compare(this.list[l], this.list[i]) < 0) {
-      smallest = l;
-    }
-    if (r < this.list.length && compare(this.list[r], this.list[smallest]) < 0) {
-      smallest = r;
-    }
-    if (smallest != i) {
-      swap(this.list, i, smallest);
-      this.heapify(smallest);
-    }
-  };
-
   BinaryHeap.prototype.insert = function (key, value) {
     var i = this.list.length;
     var node = new Node(key, value, i);
     this.list.push(node);
     var parent = getParent(i);
-    while (parent != i && compare(this.list[i], this.list[parent]) < 0) {
+    while (parent != i && this.compare(this.list[i], this.list[parent]) < 0) {
       swap(this.list, i, parent);
       i = parent;
       parent = getParent(i);
@@ -100,6 +107,42 @@
     return this.list.length;
   };
 
+  BinaryHeap.prototype.union = function (otherHeap) {
+    var array = this.list.concat(otherHeap.list);
+    buildHeapFromNodeArray(this, array);
+  }
+
+  BinaryHeap.prototype.compare = function (a, b) {
+    if (a.key > b.key) return 1;
+    if (a.key < b.key) return -1;
+    return 0;
+  };
+
+  function heapify(heap, i) {
+    var l = getLeft(i);
+    var r = getRight(i);
+    var smallest = i;
+    if (l < heap.list.length && heap.compare(heap.list[l], heap.list[i]) < 0) {
+      smallest = l;
+    }
+    if (r < heap.list.length && heap.compare(heap.list[r], heap.list[smallest]) < 0) {
+      smallest = r;
+    }
+    if (smallest != i) {
+      swap(heap.list, i, smallest);
+      heapify(heap, smallest);
+    }
+  }
+
+  // Builds a heap with the provided node array, note that this completely
+  // discards the old heap.
+  function buildHeapFromNodeArray(heap, nodeArray) {
+    heap.list = nodeArray;
+    for (var i = Math.floor(heap.list.length / 2); i >= 0; i--) {
+      heapify(heap, i);
+    }
+  }
+
   function swap(array, a, b) {
     var temp = array[a];
     array[a] = array[b];
@@ -107,12 +150,6 @@
     var tempI = array[a].i;
     array[a].i = array[b].i;
     array[b].i = tempI;
-  }
-
-  function compare(a, b) {
-    if (a.key > b.key) return 1;
-    if (a.key < b.key) return -1;
-    return 0;
   }
 
   function getParent(i) {
