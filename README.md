@@ -1,4 +1,4 @@
-# js-sorting
+# js-data-structures
 
 [![Build Status](https://secure.travis-ci.org/Tyriar/js-data-structures.png)](http://travis-ci.org/Tyriar/js-data-structures)
 
