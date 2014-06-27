@@ -116,7 +116,7 @@
       } else {
         if (this.compare(curr, next) < 0) {
           curr.sibling = next.sibling;
-          linkTree(curr, next);
+          linkTrees(curr, next);
         } else {
           if (prev == null) {
             newHead = next;
@@ -124,7 +124,7 @@
             prev.sibling = next;
           }
 
-          linkTree(next, curr);
+          linkTrees(next, curr);
           curr = next;
         }
       }

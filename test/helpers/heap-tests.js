@@ -202,8 +202,6 @@ module.exports = function (Heap) {
         expect(heap.size()).toBe(5);
         expect(other.size()).toBe(5);
         heap.union(other);
-
-    console.log(heap.head);
         expect(heap.size()).toBe(10);
         for (i = 1; i <= 10; i++) {
           expect(heap.extractMinimum().key).toBe(i);
