@@ -109,7 +109,7 @@
     var next = newHead.sibling;
 
     while (next) {
-      if (curr.degree != next.degree || (next.sibling && next.sibling.degree == curr.degree)) {
+      if (curr.degree !== next.degree || (next.sibling && next.sibling.degree === curr.degree)) {
         prev = curr;
         curr = next;
       } else {
@@ -135,8 +135,12 @@
   };
 
   BinomialHeap.prototype.compare = function (a, b) {
-    if (a.key > b.key) return 1;
-    if (a.key < b.key) return -1;
+    if (a.key > b.key) {
+      return 1;
+    }
+    if (a.key < b.key) {
+      return -1;
+    }
     return 0;
   };
 
@@ -197,7 +201,7 @@
 
   function removeTreeRoot(heap, root, prev) {
     // Remove root from the heap
-    if (root == heap.head) {
+    if (root === heap.head) {
       heap.head = root.sibling;
     } else {
       prev.sibling = root.sibling;
@@ -217,12 +221,6 @@
     newHeap.head = newHead;
 
     heap.union(newHeap);
-  }
-
-  function swap(array, a, b) {
-    var temp = array[a];
-    array[a] = array[b];
-    array[b] = temp;
   }
 
   return BinomialHeap;

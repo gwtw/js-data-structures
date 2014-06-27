@@ -38,7 +38,7 @@
   // Builds a heap with the provided key and value arrays, note that this
   // completely discards the old heap.
   BinaryHeap.prototype.buildHeap = function (keyArray, valueArray) {
-    if (keyArray.length != valueArray.length) {
+    if (keyArray.length !== valueArray.length) {
       throw "Key array must be the same length as value array";
     }
 
@@ -91,7 +91,7 @@
     var node = new Node(key, value, i);
     this.list.push(node);
     var parent = getParent(i);
-    while (parent != i && this.compare(this.list[i], this.list[parent]) < 0) {
+    while (parent !== i && this.compare(this.list[i], this.list[parent]) < 0) {
       swap(this.list, i, parent);
       i = parent;
       parent = getParent(i);
@@ -113,8 +113,12 @@
   };
 
   BinaryHeap.prototype.compare = function (a, b) {
-    if (a.key > b.key) return 1;
-    if (a.key < b.key) return -1;
+    if (a.key > b.key) {
+      return 1;
+    }
+    if (a.key < b.key) {
+      return -1;
+    }
     return 0;
   };
 
@@ -128,7 +132,7 @@
     if (r < heap.list.length && heap.compare(heap.list[r], heap.list[smallest]) < 0) {
       smallest = r;
     }
-    if (smallest != i) {
+    if (smallest !== i) {
       swap(heap.list, i, smallest);
       heapify(heap, smallest);
     }
