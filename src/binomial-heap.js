@@ -31,8 +31,9 @@
   };
 
   BinomialHeap.prototype.extractMinimum = function () {
-    if (this.head == null)
+    if (this.head == null) {
       return null;
+    }
 
     var min = this.head;
     var minPrev = null;
@@ -40,7 +41,7 @@
     var nextPrev = min;
 
     while (next != null) {
-      if (next.compareTo(min) < 0) {
+      if (this.compare(next, min) < 0) {
         min = next;
         minPrev = nextPrev;
       }
@@ -49,17 +50,57 @@
     }
 
     this.removeTreeRoot(min, minPrev);
-    return min.key;
-
     this.nodeCount--;
+
+    return min;
+  };
+
+  BinomialHeap.prototype.findMinimum = function () {
+    if (this.head === null) {
+      return undefined;
+    } else {
+      var min = this.head;
+      var next = min.sibling;
+
+      while (next != null) {
+        if (this.compare(next, min) < 0) {
+          min = next;
+        }
+        next = next.sibling;
+      }
+
+      return min;
+    }
+  };
+
+  BinomialHeap.prototype.insert = function (key, value) {
+    var tempHeap = new BinomialHeap();
+    var newNode = new Node(key, value);
+    tempHeap.head = newNode;
+    tempHeap.nodeCount++;
+    this.union(tempHeap);
+    return newNode;
+  };
+
+  BinomialHeap.prototype.isEmpty = function () {
+    return this.head === null;
+  };
+
+  // Merge two binomial trees of the same order
+  BinomialHeap.prototype.linkTree = function (minNodeTree, other) {
+    other.parent = minNodeTree;
+    other.sibling = minNodeTree.child;
+    minNodeTree.child = other;
+    minNodeTree.degree++;
   };
 
   BinomialHeap.prototype.removeTreeRoot = function (root, prev) {
     // Remove root from the heap
-    if (root == this.head)
+    if (root == this.head) {
       this.head = root.sibling;
-    else
+    } else {
       prev.sibling = root.sibling;
+    }
 
     // Reverse the order of root's children and make a new heap
     var newHead = null;
@@ -73,61 +114,25 @@
     }
     var newHeap = new BinomialHeap();
     newHeap.head = newHead;
-    newHeap.nodeCount++;
 
-    // Union the heaps and set its head as this.head
-    this.head = this.union(newHeap);
-  }
-
-  BinomialHeap.prototype.findMinimum = function () {
-    if (this.head === null) {
-      return undefined;
-    } else {
-      var min = this.head;
-      var next = min.sibling;
-
-      while (next != null) {
-        if (next.compareTo(min) < 0)
-          min = next;
-        next = next.sibling;
-      }
-
-      return min.key;
-    }
+    this.union(newHeap);
   };
-
-  BinomialHeap.prototype.insert = function (key) {
-    var tempHeap = new BinomialHeap();
-    tempHeap.head = new Node(key);
-    tempHeap.nodeCount++;
-    this.head = this.union(tempHeap);
-    this.nodeCount++;
-  };
-
-  BinomialHeap.prototype.isEmpty = function () {
-    return this.head === null;
-  };
-
-  // Merge two binomial trees of the same order
-  BinomialHeap.prototype.linkTree = function (minNodeTree, other) {
-    other.parent = minNodeTree;
-    other.sibling = minNodeTree.child;
-    minNodeTree.child = other;
-    minNodeTree.degree++;
-  }
 
   BinomialHeap.prototype.size = function () {
     return this.nodeCount;
   };
 
   BinomialHeap.prototype.union = function (heap) {
+    this.nodeCount += heap.nodeCount;
+    
     var newHead = mergeHeaps(this, heap);
 
     this.head = null;
     heap.head = null;
 
-    if (newHead == null)
+    if (newHead == null) {
       return null;
+    }
 
     var prev = null;
     var curr = newHead;
@@ -139,14 +144,15 @@
         prev = curr;
         curr = next;
       } else {
-        if (curr.compareTo(next) < 0) {
+        if (this.compare(curr, next) < 0) {
           curr.sibling = next.sibling;
           this.linkTree(curr, next);
         } else {
-          if (prev == null)
+          if (prev == null) {
             newHead = next;
-          else
+          } else {
             prev.sibling = next;
+          }
 
           this.linkTree(next, curr);
           curr = next;
@@ -156,20 +162,23 @@
       next = curr.sibling;
     }
 
-    return newHead;
+    this.head = newHead;
   }
 
-  var Node = function (key) {
+  BinomialHeap.prototype.compare = function (a, b) {
+    if (a.key > b.key) return 1;
+    if (a.key < b.key) return -1;
+    return 0;
+  }
+
+  var Node = function (key, value) {
     this.key = key;
+    this.value = value;
     this.degree = undefined;
     this.parent = undefined;
     this.child = undefined;
     this.sibling = undefined;
   };
-
-  Node.prototype.compareTo = function (other) {
-    return compare(this.key, other.key); 
-  }
 
   function mergeHeaps(a, b) {
     if (a.head == null) {
@@ -193,20 +202,17 @@
 
       while (aNext != null && bNext != null) {
         if (aNext.degree <= bNext.degree) {
-          tail.sibling = heap1Next;
+          tail.sibling = aNext;
           aNext = aNext.sibling;
         } else {
-          tail.sibling = heap2Next;
+          tail.sibling = bNext;
           bNext = bNext.sibling;
         }
 
         tail = tail.sibling;
       }
 
-      if (aNext != null)
-        tail.sibling = aNext;
-      else
-        tail.sibling = bNext;
+      tail.sibling = aNext ? aNext : bNext;
 
       return head;
     }
@@ -216,12 +222,6 @@
     var temp = array[a];
     array[a] = array[b];
     array[b] = temp;
-  }
-
-  function compare(a, b) {
-    if (a > b) return 1;
-    if (a < b) return -1;
-    return 0;
   }
 
   return BinomialHeap;
