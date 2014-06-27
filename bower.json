@@ -14,7 +14,9 @@
   "keywords": [
     "algorithm",
     "computer science",
-    "sorting"
+    "data structure",
+    "heap",
+    "tree"
   ],
   "license": "BSD-2-clause",
   "ignore": [
