@@ -110,7 +110,7 @@
   BinaryHeap.prototype.union = function (otherHeap) {
     var array = this.list.concat(otherHeap.list);
     buildHeapFromNodeArray(this, array);
-  }
+  };
 
   BinaryHeap.prototype.compare = function (a, b) {
     if (a.key > b.key) return 1;
