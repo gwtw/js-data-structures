@@ -1,10 +1,12 @@
 // Explanation: http://www.growingwiththeweb.com/2014/01/binomial-heap.html
 //
 // Complexity (n=input size):
-//   Extract minimum: O(log n)
-//   Find minimum:    O(log n)
-//   Insert:          O(log n)
-//   Union:           O(log n)
+//   extractMinimum: O(log n)
+//   findMinimum:    O(log n)
+//   insert:         O(log n)
+//   isEmpty:        O(1)
+//   size:           O(1)
+//   union:          O(log n)
 
 // UMD pattern: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
 (function (root, factory) {
@@ -49,7 +51,7 @@
       next = next.sibling;
     }
 
-    this.removeTreeRoot(min, minPrev);
+    removeTreeRoot(this, min, minPrev);
     this.nodeCount--;
 
     return min;
@@ -86,45 +88,13 @@
     return this.head === null;
   };
 
-  // Merge two binomial trees of the same order
-  BinomialHeap.prototype.linkTree = function (minNodeTree, other) {
-    other.parent = minNodeTree;
-    other.sibling = minNodeTree.child;
-    minNodeTree.child = other;
-    minNodeTree.degree++;
-  };
-
-  BinomialHeap.prototype.removeTreeRoot = function (root, prev) {
-    // Remove root from the heap
-    if (root == this.head) {
-      this.head = root.sibling;
-    } else {
-      prev.sibling = root.sibling;
-    }
-
-    // Reverse the order of root's children and make a new heap
-    var newHead = null;
-    var child = root.child;
-    while (child != null) {
-      var next = child.sibling;
-      child.sibling = newHead;
-      child.parent = null;
-      newHead = child;
-      child = next;
-    }
-    var newHeap = new BinomialHeap();
-    newHeap.head = newHead;
-
-    this.union(newHeap);
-  };
-
   BinomialHeap.prototype.size = function () {
     return this.nodeCount;
   };
 
   BinomialHeap.prototype.union = function (heap) {
     this.nodeCount += heap.nodeCount;
-    
+
     var newHead = mergeHeaps(this, heap);
 
     this.head = null;
@@ -146,7 +116,7 @@
       } else {
         if (this.compare(curr, next) < 0) {
           curr.sibling = next.sibling;
-          this.linkTree(curr, next);
+          linkTree(curr, next);
         } else {
           if (prev == null) {
             newHead = next;
@@ -154,7 +124,7 @@
             prev.sibling = next;
           }
 
-          this.linkTree(next, curr);
+          linkTree(next, curr);
           curr = next;
         }
       }
@@ -216,6 +186,38 @@
 
       return head;
     }
+  }
+
+  // Link two binomial trees of the same order
+  function linkTrees(minNodeTree, other) {
+    other.parent = minNodeTree;
+    other.sibling = minNodeTree.child;
+    minNodeTree.child = other;
+    minNodeTree.degree++;
+  }
+
+  function removeTreeRoot(heap, root, prev) {
+    // Remove root from the heap
+    if (root == heap.head) {
+      heap.head = root.sibling;
+    } else {
+      prev.sibling = root.sibling;
+    }
+
+    // Reverse the order of root's children and make a new heap
+    var newHead = null;
+    var child = root.child;
+    while (child != null) {
+      var next = child.sibling;
+      child.sibling = newHead;
+      child.parent = null;
+      newHead = child;
+      child = next;
+    }
+    var newHeap = new BinomialHeap();
+    newHeap.head = newHead;
+
+    heap.union(newHeap);
   }
 
   function swap(array, a, b) {
