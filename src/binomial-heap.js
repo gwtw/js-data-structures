@@ -1,6 +1,7 @@
 // Explanation: http://www.growingwiththeweb.com/2014/01/binomial-heap.html
 //
 // Complexity (n=input size):
+//   clear:          O(log n)
 //   extractMinimum: O(log n)
 //   findMinimum:    O(log n)
 //   insert:         O(log n)
@@ -30,6 +31,11 @@
     if (customCompare) {
       this.compare = customCompare;
     }
+  };
+
+  BinomialHeap.prototype.clear = function () {
+    this.head = undefined;
+    this.nodeCount = 0;
   };
 
   BinomialHeap.prototype.extractMinimum = function () {

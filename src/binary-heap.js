@@ -51,6 +51,10 @@
     buildHeapFromNodeArray(this, nodeArray);
   };
 
+  BinaryHeap.prototype.clear = function () {
+    this.list.length = 0;
+  };
+
   BinaryHeap.prototype.decreaseKey = function (node, newKey) {
     node.key = newKey;
     var parent = getParent(node.i);

@@ -146,7 +146,7 @@ module.exports = function (Heap) {
         expect(heap.extractMinimum()).toEqual(node2);
         expect(heap.isEmpty()).toBe(true);
       });
-      
+
       it("should delete a node in the middle of the heap", function () {
         var node3 = heap.insert(13, null);
         var node4 = heap.insert(26, null);
@@ -207,6 +207,26 @@ module.exports = function (Heap) {
           expect(heap.extractMinimum().key).toBe(i);
         }
         expect(heap.isEmpty()).toBe(true);
+      });
+    });
+  }
+
+  if (Heap.prototype.clear) {
+    describe("clear", function () {
+      it("should set the heap's size to 0", function () {
+        heap.insert(1, null);
+        heap.insert(2, null);
+        heap.insert(3, null);
+        heap.clear();
+        expect(heap.size()).toBe(0);
+      });
+
+      it("should set the heap's minimum node to undefined", function () {
+        heap.insert(1, null);
+        heap.insert(2, null);
+        heap.insert(3, null);
+        heap.clear();
+        expect(heap.findMinimum()).not.toBeDefined();
       });
     });
   }
