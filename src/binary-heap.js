@@ -2,6 +2,7 @@
 //
 // Complexity (n=input size):
 //   buildHeap:      O(n)
+//   clear:          O(1)
 //   decreaseKey:    O(log n)
 //   delete:         O(log n)
 //   extractMinimum: O(log n)
