@@ -24,9 +24,5 @@
   "bugs": {
     "url": "https://github.com/Tyriar/js-data-structures/issues"
   },
-  "homepage": "https://github.com/Tyriar/js-data-structures",
-  "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-umd": "^1.7.4"
-  }
+  "homepage": "https://github.com/Tyriar/js-data-structures"
 }
