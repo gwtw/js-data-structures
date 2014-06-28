@@ -39,6 +39,19 @@ module.exports = function (Heap) {
         expect(heap.extractMinimum().key).toEqual(node5.key);
       });
 
+      it("should extract the minimum item from a jumbled heap", function () {
+        var node1 = heap.insert(1, null);
+        var node4 = heap.insert(4, null);
+        var node3 = heap.insert(3, null);
+        var node5 = heap.insert(5, null);
+        var node2 = heap.insert(2, null);
+        expect(heap.extractMinimum().key).toEqual(node1.key);
+        expect(heap.extractMinimum().key).toEqual(node2.key);
+        expect(heap.extractMinimum().key).toEqual(node3.key);
+        expect(heap.extractMinimum().key).toEqual(node4.key);
+        expect(heap.extractMinimum().key).toEqual(node5.key);
+      });
+
       it("should extract the minimum item from a heap containing negative items", function () {
         var node1 = heap.insert(-9, null);
         var node4 = heap.insert(6, null);
@@ -156,10 +169,10 @@ module.exports = function (Heap) {
         expect(heap.size()).toBe(5);
         heap.delete(node3);
         expect(heap.size()).toBe(4);
-        expect(heap.extractMinimum()).toEqual(node1);
-        expect(heap.extractMinimum()).toEqual(node2);
-        expect(heap.extractMinimum()).toEqual(node4);
-        expect(heap.extractMinimum()).toEqual(node5);
+        expect(heap.extractMinimum().key).toEqual(node1.key);
+        expect(heap.extractMinimum().key).toEqual(node2.key);
+        expect(heap.extractMinimum().key).toEqual(node4.key);
+        expect(heap.extractMinimum().key).toEqual(node5.key);
         expect(heap.isEmpty()).toBe(true);
       });
     });
@@ -242,11 +255,11 @@ module.exports = function (Heap) {
       var node1 = heap.insert(-6, null);
       var node5 = heap.insert(27, null);
       expect(heap.size()).toBe(5);
-      expect(heap.extractMinimum()).toEqual(node1);
-      expect(heap.extractMinimum()).toEqual(node2);
-      expect(heap.extractMinimum()).toEqual(node3);
-      expect(heap.extractMinimum()).toEqual(node4);
-      expect(heap.extractMinimum()).toEqual(node5);
+      expect(heap.extractMinimum().key).toEqual(node1.key);
+      expect(heap.extractMinimum().key).toEqual(node2.key);
+      expect(heap.extractMinimum().key).toEqual(node3.key);
+      expect(heap.extractMinimum().key).toEqual(node4.key);
+      expect(heap.extractMinimum().key).toEqual(node5.key);
       expect(heap.isEmpty()).toBe(true);
     });
   });
@@ -262,11 +275,11 @@ module.exports = function (Heap) {
       var node1 = heap.insert(-6, null);
       var node5 = heap.insert(27, null);
       expect(heap.size()).toBe(5);
-      expect(heap.extractMinimum()).toEqual(node5);
-      expect(heap.extractMinimum()).toEqual(node4);
-      expect(heap.extractMinimum()).toEqual(node3);
-      expect(heap.extractMinimum()).toEqual(node2);
-      expect(heap.extractMinimum()).toEqual(node1);
+      expect(heap.extractMinimum().key).toEqual(node5.key);
+      expect(heap.extractMinimum().key).toEqual(node4.key);
+      expect(heap.extractMinimum().key).toEqual(node3.key);
+      expect(heap.extractMinimum().key).toEqual(node2.key);
+      expect(heap.extractMinimum().key).toEqual(node1.key);
       expect(heap.isEmpty()).toBe(true);
     });
   });
@@ -278,11 +291,11 @@ module.exports = function (Heap) {
     var node1 = heap.insert('a', null);
     var node5 = heap.insert('q', null);
     expect(heap.size()).toBe(5);
-    expect(heap.extractMinimum()).toEqual(node1);
-    expect(heap.extractMinimum()).toEqual(node2);
-    expect(heap.extractMinimum()).toEqual(node3);
-    expect(heap.extractMinimum()).toEqual(node4);
-    expect(heap.extractMinimum()).toEqual(node5);
+    expect(heap.extractMinimum().key).toEqual(node1.key);
+    expect(heap.extractMinimum().key).toEqual(node2.key);
+    expect(heap.extractMinimum().key).toEqual(node3.key);
+    expect(heap.extractMinimum().key).toEqual(node4.key);
+    expect(heap.extractMinimum().key).toEqual(node5.key);
     expect(heap.isEmpty()).toBe(true);
   });
 };

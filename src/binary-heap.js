@@ -1,16 +1,16 @@
 // Explanation: http://www.growingwiththeweb.com/2013/01/data-structure-binary-heap.html
 //
 // Complexity (n=input size):
-//   buildHeap:      O(n)
-//   clear:          O(1)
-//   decreaseKey:    O(log n)
-//   delete:         O(log n)
-//   extractMinimum: O(log n)
-//   findMinimum:    O(1)
-//   insert:         O(log n)
-//   isEmpty:        O(1)
-//   size:           O(1)
-//   union:          O(n)
+//   buildHeap:      Θ(n)
+//   clear:          Θ(1)
+//   decreaseKey:    Θ(log n)
+//   delete:         Θ(log n)
+//   extractMinimum: Θ(log n)
+//   findMinimum:    Θ(1)
+//   insert:         Θ(log n)
+//   isEmpty:        Θ(1)
+//   size:           Θ(1)
+//   union:          Θ(n)
 
 // UMD pattern: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
 (function (root, factory) {
@@ -57,6 +57,11 @@
   };
 
   BinaryHeap.prototype.decreaseKey = function (node, newKey) {
+    // Create a temp node for comparison
+    if (this.compare(new Node(newKey, undefined), node.key) > 0) {
+      throw "New key is larger than old key.";
+    }
+
     node.key = newKey;
     var parent = getParent(node.i);
     while (this.compare(node, this.list[parent]) < 0) {
