@@ -1,7 +1,7 @@
 // Explanation: http://www.growingwiththeweb.com/2014/01/binomial-heap.html
 //
 // Complexity (n=input size):
-//   clear:          Θ(1) amortised
+//   clear:          (1) amortised
 //   decreaseKey:    Θ(1) amortised
 //   delete:         O(log n) amortised
 //   extractMinimum: O(log n) amortised
@@ -81,10 +81,10 @@
         do {
           child.parent = undefined;
           child = child.next;
-        } while (child != extractedMin.child);
+        } while (child !== extractedMin.child);
       }
 
-      var nextInRootList = (this.minNode.next == this.minNode ? undefined : this.minNode.next);
+      var nextInRootList = (this.minNode.next === this.minNode ? undefined : this.minNode.next);
 
       // Remove min from root list
       removeNodeFromList(extractedMin);
@@ -140,7 +140,7 @@
   function cut(node, parent, minNode, compare) {
     removeNodeFromList(node);
     parent.degree--;
-    minNode = mergeLists(minNode, node);
+    minNode = mergeLists(minNode, node, compare);
     node.isMarked = false;
     return minNode;
   }
@@ -270,7 +270,7 @@
     do {
       this.items.push(current);
       current = current.next;
-    } while (start != current);
+    } while (start !== current);
   };
 
   NodeListIterator.prototype.hasNext = function () {

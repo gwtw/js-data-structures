@@ -150,15 +150,6 @@
     return 0;
   };
 
-  var Node = function (key, value) {
-    this.key = key;
-    this.value = value;
-    this.degree = undefined;
-    this.parent = undefined;
-    this.child = undefined;
-    this.sibling = undefined;
-  };
-
   function mergeHeaps(a, b) {
     if (!a.head) {
       return b.head;
@@ -228,6 +219,15 @@
 
     heap.union(newHeap);
   }
+
+  function Node(key, value) {
+    this.key = key;
+    this.value = value;
+    this.degree = undefined;
+    this.parent = undefined;
+    this.child = undefined;
+    this.sibling = undefined;
+  };
 
   return BinomialHeap;
 }));
