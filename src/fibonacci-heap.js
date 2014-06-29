@@ -93,6 +93,7 @@
       // Merge the children of the minimum node with the root list
       this.minNode = mergeLists(nextInRootList, extractedMin.child, this.compare);
       if (nextInRootList) {
+        this.minNode = nextInRootList;
         this.minNode = consolidate(this.minNode, this.compare);
       }
     }
