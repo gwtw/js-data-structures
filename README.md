@@ -37,7 +37,7 @@ var FibonacciHeap = require("fibonacci-heap");
 
 ## Usage
 
-See [the source files][4] for a list of public interfaces, here is an example for Fibonacci heap.
+See [the source files][3] for a list of public interfaces, here is an example for Fibonacci heap.
 
 ```javascript
 var heap = new FibonacciHeap();
@@ -59,13 +59,8 @@ npm install
 npm test
 ```
 
-## License
-
-js-sorting is released under [BSD (2 clause)][3].
-
 
 
 [1]: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
 [2]: http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure
-[3]: https://github.com/Tyriar/js-data-structures/blob/master/LICENSE
-[4]: https://github.com/Tyriar/js-data-structures/tree/master/src
+[3]: https://github.com/Tyriar/js-data-structures/tree/master/src
