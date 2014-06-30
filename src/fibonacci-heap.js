@@ -1,7 +1,7 @@
 // Explanation: http://www.growingwiththeweb.com/2014/01/binomial-heap.html
 //
 // Complexity (n=input size):
-//   clear:          (1) amortised
+//   clear:          Θ(1) amortised
 //   decreaseKey:    Θ(1) amortised
 //   delete:         O(log n) amortised
 //   extractMinimum: O(log n) amortised

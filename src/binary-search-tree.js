@@ -6,8 +6,8 @@
 //  findMaximum: O(n)*
 //  findMinimum: O(n)*
 //  insert:      O(n)*
-//  traverse*:   O(n)
-//  size:        O(1)
+//  traverse*:   Θ(n)
+//  size:        Θ(1)
 //
 //  * O(log n) average case
 
