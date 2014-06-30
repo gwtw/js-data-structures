@@ -37,7 +37,7 @@ var FibonacciHeap = require("fibonacci-heap");
 
 ## Usage
 
-See [the source files][3] for a list of public interfaces, here is an example for Fibonacci heap.
+See [the source files][3] for a list of public interfaces on each data structure, here is an example for the [Fibonacci heap][5].
 
 ```javascript
 var heap = new FibonacciHeap();
@@ -52,15 +52,26 @@ while (!heap.isEmpty()) {
 }
 ```
 
-## Testing locally
+
+## Contributing
+
+I'd love to get some contributions for other data structures, if you want to make a pull request try to follow the existing style of the code and make sure you add tests for the new data structure.
+
+### Testing locally
 
 ```
 npm install
 npm test
 ```
 
+## See also
+
+* [Tyriar/js-sorting][4]
+
 
 
 [1]: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
 [2]: http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure
 [3]: https://github.com/Tyriar/js-data-structures/tree/master/src
+[4]: https://github.com/Tyriar/js-sorting
+[5]: https://github.com/Tyriar/js-data-structures/blob/master/src/fibonacci-heap.js
