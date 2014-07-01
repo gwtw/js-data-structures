@@ -6,6 +6,7 @@
 //  findMaximum: O(n)*
 //  findMinimum: O(n)*
 //  insert:      O(n)*
+//  isEmpty:     Θ(1)
 //  traverse*:   Θ(n)
 //  size:        Θ(1)
 //
@@ -145,6 +146,10 @@
         break;
       }
     }
+  };
+
+  BinarySearchTree.prototype.isEmpty = function () {
+    return !this.root;
   };
 
   BinarySearchTree.prototype.size = function (operation) {

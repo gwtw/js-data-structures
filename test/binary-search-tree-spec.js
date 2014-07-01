@@ -59,4 +59,60 @@ describe("binary-search-tree", function () {
       expect(tree.contains(2)).toBe(false);
     });
   });
+
+  describe("findMinimum", function () {
+    describe("with an empty tree", function () {
+      it("should return undefined", function () {
+        expect(tree.isEmpty()).toBe(true);
+        expect(tree.findMinimum()).not.toBeDefined();
+      });
+    });
+
+    describe("with a single element tree", function () {
+      it("should return the smallest element", function () {
+        tree.insert(1);
+        expect(tree.size()).toBe(1);
+        expect(tree.findMinimum()).toBe(1);
+      });
+    });
+
+    describe("with a multiple element tree", function () {
+      it("should return the smallest element", function () {
+        tree.insert(3);
+        tree.insert(4);
+        tree.insert(1);
+        tree.insert(2);
+        expect(tree.size()).toBe(4);
+        expect(tree.findMinimum()).toBe(1);
+      });
+    });
+  });
+
+  describe("findMaximum", function () {
+    describe("with an empty tree", function () {
+      it("should return undefined", function () {
+        expect(tree.isEmpty()).toBe(true);
+        expect(tree.findMaximum()).not.toBeDefined();
+      });
+    });
+
+    describe("with a single element tree", function () {
+      it("should return the largest element", function () {
+        tree.insert(1);
+        expect(tree.size()).toBe(1);
+        expect(tree.findMaximum()).toBe(1);
+      });
+    });
+
+    describe("with a multiple element tree", function () {
+      it("should return the largest element", function () {
+        tree.insert(3);
+        tree.insert(4);
+        tree.insert(1);
+        tree.insert(2);
+        expect(tree.size()).toBe(4);
+        expect(tree.findMaximum()).toBe(4);
+      });
+    });
+  });
 });
