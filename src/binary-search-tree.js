@@ -6,7 +6,6 @@
 //  findMaximum: O(n)*
 //  findMinimum: O(n)*
 //  insert:      O(n)*
-//  isEmpty:     Θ(1)
 //  traverse*:   Θ(n)
 //  size:        Θ(1)
 //
@@ -148,35 +147,27 @@
     }
   };
 
-  BinarySearchTree.prototype.isEmpty = function () {
-    return !this.root;
-  };
-
-  BinarySearchTree.prototype.size = function (operation) {
+  BinarySearchTree.prototype.size = function () {
     return this.nodeCount;
   };
 
   BinarySearchTree.prototype.traversePreOrder = function (visit) {
-    if (!this.root) {
-      return;
-    }
-
-    var parentStack = [];
+    parentStack = [];
     parentStack.push(this.root);
     do {
-      var top = parentStack.pop();
-      visit(top.key);
-      if (top.right) {
+      top = parentStack.pop();
+      visit(top);
+      if (top.right !== null) {
         parentStack.push(top.right);
       }
-      if (top.left) {
+      if (top.left !== null) {
         parentStack.push(top.left);
       }
     } while (parentStack.length);
   };
 
   BinarySearchTree.prototype.traverseInOrder = function (visit) {
-    var parentStack = [];
+    parentStack = [];
     var node = this.root;
     while (parentStack.length || node) {
       if (node) {
@@ -184,29 +175,29 @@
         node = node.left;
       } else {
         node = parentStack.pop();
-        visit(node.key);
+        visit(node);
         node = node.right;
       }
     }
   };
 
   BinarySearchTree.prototype.traversePostOrder = function (visit) {
-    var parentStack = [];
+    parentStack = [];
     var node = this.root;
-    var lastVisitedNode;
+    var lastnodevisited;
     while (parentStack.length || node) {
       if (node) {
         parentStack.push(node);
         node = node.left;
       } else {
-        var nextNode = parentStack[parentStack.length - 1];
-        if (nextNode.right && lastVisitedNode !== nextNode.right) {
+        peeknode = parentStack[parentStack.length - 1];
+        if (peeknode.right && lastnodevisited !== peeknode.right) {
           // if right child exists AND traversing node from left child, move right
-          node = nextNode.right;
+          node = peeknode.right;
         } else {
           parentStack.pop();
-          visit(nextNode.key);
-          lastVisitedNode = nextNode;
+          visit(peeknode);
+          lastnodevisited = peeknode;
         }
       }
     }

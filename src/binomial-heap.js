@@ -227,7 +227,7 @@
     this.parent = undefined;
     this.child = undefined;
     this.sibling = undefined;
-  };
+  }
 
   return BinomialHeap;
 }));
