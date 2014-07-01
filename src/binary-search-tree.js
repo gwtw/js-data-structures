@@ -157,22 +157,26 @@
   };
 
   BinarySearchTree.prototype.traversePreOrder = function (visit) {
-    parentStack = [];
+    if (!this.root) {
+      return;
+    }
+
+    var parentStack = [];
     parentStack.push(this.root);
     do {
-      top = parentStack.pop();
-      visit(top);
-      if (top.right !== null) {
+      var top = parentStack.pop();
+      visit(top.key);
+      if (top.right) {
         parentStack.push(top.right);
       }
-      if (top.left !== null) {
+      if (top.left) {
         parentStack.push(top.left);
       }
     } while (parentStack.length);
   };
 
   BinarySearchTree.prototype.traverseInOrder = function (visit) {
-    parentStack = [];
+    var parentStack = [];
     var node = this.root;
     while (parentStack.length || node) {
       if (node) {
@@ -180,29 +184,29 @@
         node = node.left;
       } else {
         node = parentStack.pop();
-        visit(node);
+        visit(node.key);
         node = node.right;
       }
     }
   };
 
   BinarySearchTree.prototype.traversePostOrder = function (visit) {
-    parentStack = [];
+    var parentStack = [];
     var node = this.root;
-    var lastnodevisited;
+    var lastVisitedNode;
     while (parentStack.length || node) {
       if (node) {
         parentStack.push(node);
         node = node.left;
       } else {
-        peeknode = parentStack[parentStack.length - 1];
-        if (peeknode.right && lastnodevisited !== peeknode.right) {
+        var nextNode = parentStack[parentStack.length - 1];
+        if (nextNode.right && lastVisitedNode !== nextNode.right) {
           // if right child exists AND traversing node from left child, move right
-          node = peeknode.right;
+          node = nextNode.right;
         } else {
           parentStack.pop();
-          visit(peeknode);
-          lastnodevisited = peeknode;
+          visit(nextNode.key);
+          lastVisitedNode = nextNode;
         }
       }
     }

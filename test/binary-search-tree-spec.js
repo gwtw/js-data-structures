@@ -89,14 +89,14 @@ describe("binary-search-tree", function () {
   });
 
   describe("findMaximum", function () {
-    describe("with an empty tree", function () {
+    describe("given an empty tree", function () {
       it("should return undefined", function () {
         expect(tree.isEmpty()).toBe(true);
         expect(tree.findMaximum()).not.toBeDefined();
       });
     });
 
-    describe("with a single element tree", function () {
+    describe("given a single element tree", function () {
       it("should return the largest element", function () {
         tree.insert(1);
         expect(tree.size()).toBe(1);
@@ -104,7 +104,7 @@ describe("binary-search-tree", function () {
       });
     });
 
-    describe("with a multiple element tree", function () {
+    describe("given a multiple element tree", function () {
       it("should return the largest element", function () {
         tree.insert(3);
         tree.insert(4);
@@ -112,6 +112,168 @@ describe("binary-search-tree", function () {
         tree.insert(2);
         expect(tree.size()).toBe(4);
         expect(tree.findMaximum()).toBe(4);
+      });
+    });
+  });
+
+  describe("traversePreOrder", function () {
+    describe("given an empty tree", function () {
+      it("should not call the operation", function () {
+        tree.traversePreOrder(function (v) {
+          expect(true).toBe(false);
+        });
+      });
+    });
+
+    describe("given a single element tree", function () {
+      it("should call the operation once for the correct element", function () {
+        tree.insert(1);
+
+        var expectedOrder = [1];
+        var i = 0;
+        tree.traversePreOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+
+    describe("given a balanced tree with height 2", function () {
+      it("should call the operation for the correct elements in the correct order", function () {
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(3);
+
+        var expectedOrder = [2, 1, 3];
+        var i = 0;
+        tree.traversePreOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+
+    describe("given a balanced tree with height 3", function () {
+      it("should call the operation for the correct elements in the correct order", function () {
+        tree.insert(4);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(3);
+        tree.insert(6);
+        tree.insert(5);
+        tree.insert(7);
+
+        var expectedOrder = [4, 2, 1, 3, 6, 5, 7];
+        var i = 0;
+        tree.traversePreOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+  });
+
+  describe("traverseInOrder", function () {
+    describe("given an empty tree", function () {
+      it("should not call the operation", function () {
+        tree.traverseInOrder(function (v) {
+          expect(true).toBe(false);
+        });
+      });
+    });
+
+    describe("given a single element tree", function () {
+      it("should call the operation once for the correct element", function () {
+        tree.insert(1);
+
+        var expectedOrder = [1];
+        var i = 0;
+        tree.traverseInOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+
+    describe("given a balanced tree with height 2", function () {
+      it("should call the operation for the correct elements in the correct order", function () {
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(3);
+
+        var expectedOrder = [1, 2, 3];
+        var i = 0;
+        tree.traverseInOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+
+    describe("given a balanced tree with height 3", function () {
+      it("should call the operation for the correct elements in the correct order", function () {
+        tree.insert(4);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(3);
+        tree.insert(6);
+        tree.insert(5);
+        tree.insert(7);
+
+        var expectedOrder = [1, 2, 3, 4, 5, 6, 7];
+        var i = 0;
+        tree.traverseInOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+  });
+
+  describe("traversePostOrder", function () {
+    describe("given an empty tree", function () {
+      it("should not call the operation", function () {
+        tree.traversePreOrder(function (v) {
+          expect(true).toBe(false);
+        });
+      });
+    });
+
+    describe("given a single element tree", function () {
+      it("should call the operation once for the correct element", function () {
+        tree.insert(1);
+
+        var expectedOrder = [1];
+        var i = 0;
+        tree.traversePostOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+
+    describe("given a balanced tree with height 2", function () {
+      it("should call the operation for the correct elements in the correct order", function () {
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(3);
+
+        var expectedOrder = [1, 3, 2];
+        var i = 0;
+        tree.traversePostOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
+      });
+    });
+
+    describe("given a balanced tree with height 3", function () {
+      it("should call the operation for the correct elements in the correct order", function () {
+        tree.insert(4);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(3);
+        tree.insert(6);
+        tree.insert(5);
+        tree.insert(7);
+
+        var expectedOrder = [1, 3, 2, 5, 7, 6, 4];
+        var i = 0;
+        tree.traversePostOrder(function (v) {
+          expect(v).toBe(expectedOrder[i++]);
+        });
       });
     });
   });
