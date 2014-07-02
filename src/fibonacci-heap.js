@@ -11,7 +11,6 @@
 //   size:           Θ(n)
 //   union:          Θ(1)
 
-// UMD pattern: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
 (function (root, factory) {
   'use strict';
   if (typeof define === 'function' && define.amd) {
