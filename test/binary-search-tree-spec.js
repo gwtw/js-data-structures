@@ -7,55 +7,55 @@ describe("binary-search-tree", function () {
     tree = new BinarySearchTree();
   });
 
-  describe("insert", function () {
+  describe("add", function () {
     it("Should insert elements", function () {
       expect(tree.size()).toBe(0);
-      tree.insert(1);
+      tree.add(1);
       expect(tree.size()).toBe(1);
-      tree.insert(2);
+      tree.add(2);
       expect(tree.size()).toBe(2);
-      tree.insert(3);
+      tree.add(3);
       expect(tree.size()).toBe(3);
     });
   });
 
-  describe("delete", function () {
-    it("should delete left child elements", function () {
-      tree.insert(2);
-      tree.insert(1);
-      tree.insert(3);
+  describe("remove", function () {
+    it("should remove left child elements", function () {
+      tree.add(2);
+      tree.add(1);
+      tree.add(3);
       expect(tree.size()).toBe(3);
-      expect(tree.delete(2)).toBe(true);
+      expect(tree.remove(2)).toBe(true);
       expect(tree.size()).toBe(2);
     });
 
-    it("should delete right child elements", function () {
-      tree.insert(2);
-      tree.insert(1);
-      tree.insert(3);
+    it("should remove right child elements", function () {
+      tree.add(2);
+      tree.add(1);
+      tree.add(3);
       expect(tree.size()).toBe(3);
-      expect(tree.delete(3)).toBe(true);
+      expect(tree.remove(3)).toBe(true);
       expect(tree.size()).toBe(2);
     });
 
-    it("should not delete non-existant elements", function () {
-      tree.insert(2);
-      tree.insert(1);
-      tree.insert(3);
+    it("should not remove non-existant elements", function () {
+      tree.add(2);
+      tree.add(1);
+      tree.add(3);
       expect(tree.size()).toBe(3);
-      expect(tree.delete(4)).toBe(false);
+      expect(tree.remove(4)).toBe(false);
       expect(tree.size()).toBe(3);
     });
   });
 
   describe("contains", function () {
     it("should return an inserted element", function () {
-      tree.insert(1);
+      tree.add(1);
       expect(tree.contains(1)).toBe(true);
     });
 
     it("should not return a non-existant element", function () {
-      tree.insert(1);
+      tree.add(1);
       expect(tree.contains(2)).toBe(false);
     });
   });
@@ -70,7 +70,7 @@ describe("binary-search-tree", function () {
 
     describe("with a single element tree", function () {
       it("should return the smallest element", function () {
-        tree.insert(1);
+        tree.add(1);
         expect(tree.size()).toBe(1);
         expect(tree.findMinimum()).toBe(1);
       });
@@ -78,10 +78,10 @@ describe("binary-search-tree", function () {
 
     describe("with a multiple element tree", function () {
       it("should return the smallest element", function () {
-        tree.insert(3);
-        tree.insert(4);
-        tree.insert(1);
-        tree.insert(2);
+        tree.add(3);
+        tree.add(4);
+        tree.add(1);
+        tree.add(2);
         expect(tree.size()).toBe(4);
         expect(tree.findMinimum()).toBe(1);
       });
@@ -98,7 +98,7 @@ describe("binary-search-tree", function () {
 
     describe("given a single element tree", function () {
       it("should return the largest element", function () {
-        tree.insert(1);
+        tree.add(1);
         expect(tree.size()).toBe(1);
         expect(tree.findMaximum()).toBe(1);
       });
@@ -106,10 +106,10 @@ describe("binary-search-tree", function () {
 
     describe("given a multiple element tree", function () {
       it("should return the largest element", function () {
-        tree.insert(3);
-        tree.insert(4);
-        tree.insert(1);
-        tree.insert(2);
+        tree.add(3);
+        tree.add(4);
+        tree.add(1);
+        tree.add(2);
         expect(tree.size()).toBe(4);
         expect(tree.findMaximum()).toBe(4);
       });
@@ -127,7 +127,7 @@ describe("binary-search-tree", function () {
 
     describe("given a single element tree", function () {
       it("should call the operation once for the correct element", function () {
-        tree.insert(1);
+        tree.add(1);
 
         var expectedOrder = [1];
         var i = 0;
@@ -139,9 +139,9 @@ describe("binary-search-tree", function () {
 
     describe("given a balanced tree with height 2", function () {
       it("should call the operation for the correct elements in the correct order", function () {
-        tree.insert(2);
-        tree.insert(1);
-        tree.insert(3);
+        tree.add(2);
+        tree.add(1);
+        tree.add(3);
 
         var expectedOrder = [2, 1, 3];
         var i = 0;
@@ -153,13 +153,13 @@ describe("binary-search-tree", function () {
 
     describe("given a balanced tree with height 3", function () {
       it("should call the operation for the correct elements in the correct order", function () {
-        tree.insert(4);
-        tree.insert(2);
-        tree.insert(1);
-        tree.insert(3);
-        tree.insert(6);
-        tree.insert(5);
-        tree.insert(7);
+        tree.add(4);
+        tree.add(2);
+        tree.add(1);
+        tree.add(3);
+        tree.add(6);
+        tree.add(5);
+        tree.add(7);
 
         var expectedOrder = [4, 2, 1, 3, 6, 5, 7];
         var i = 0;
@@ -181,7 +181,7 @@ describe("binary-search-tree", function () {
 
     describe("given a single element tree", function () {
       it("should call the operation once for the correct element", function () {
-        tree.insert(1);
+        tree.add(1);
 
         var expectedOrder = [1];
         var i = 0;
@@ -193,9 +193,9 @@ describe("binary-search-tree", function () {
 
     describe("given a balanced tree with height 2", function () {
       it("should call the operation for the correct elements in the correct order", function () {
-        tree.insert(2);
-        tree.insert(1);
-        tree.insert(3);
+        tree.add(2);
+        tree.add(1);
+        tree.add(3);
 
         var expectedOrder = [1, 2, 3];
         var i = 0;
@@ -207,13 +207,13 @@ describe("binary-search-tree", function () {
 
     describe("given a balanced tree with height 3", function () {
       it("should call the operation for the correct elements in the correct order", function () {
-        tree.insert(4);
-        tree.insert(2);
-        tree.insert(1);
-        tree.insert(3);
-        tree.insert(6);
-        tree.insert(5);
-        tree.insert(7);
+        tree.add(4);
+        tree.add(2);
+        tree.add(1);
+        tree.add(3);
+        tree.add(6);
+        tree.add(5);
+        tree.add(7);
 
         var expectedOrder = [1, 2, 3, 4, 5, 6, 7];
         var i = 0;
@@ -235,7 +235,7 @@ describe("binary-search-tree", function () {
 
     describe("given a single element tree", function () {
       it("should call the operation once for the correct element", function () {
-        tree.insert(1);
+        tree.add(1);
 
         var expectedOrder = [1];
         var i = 0;
@@ -247,9 +247,9 @@ describe("binary-search-tree", function () {
 
     describe("given a balanced tree with height 2", function () {
       it("should call the operation for the correct elements in the correct order", function () {
-        tree.insert(2);
-        tree.insert(1);
-        tree.insert(3);
+        tree.add(2);
+        tree.add(1);
+        tree.add(3);
 
         var expectedOrder = [1, 3, 2];
         var i = 0;
@@ -261,13 +261,13 @@ describe("binary-search-tree", function () {
 
     describe("given a balanced tree with height 3", function () {
       it("should call the operation for the correct elements in the correct order", function () {
-        tree.insert(4);
-        tree.insert(2);
-        tree.insert(1);
-        tree.insert(3);
-        tree.insert(6);
-        tree.insert(5);
-        tree.insert(7);
+        tree.add(4);
+        tree.add(2);
+        tree.add(1);
+        tree.add(3);
+        tree.add(6);
+        tree.add(5);
+        tree.add(7);
 
         var expectedOrder = [1, 3, 2, 5, 7, 6, 4];
         var i = 0;

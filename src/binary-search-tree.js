@@ -2,10 +2,10 @@
 //
 // Complexity (n=input size):
 //  contains:    O(n)*
-//  delete:      O(n)*
+//  remove:      O(n)*
 //  findMaximum: O(n)*
 //  findMinimum: O(n)*
-//  insert:      O(n)*
+//  add:         O(n)*
 //  isEmpty:     Θ(1)
 //  traverse*:   Θ(n)
 //  size:        Θ(1)
@@ -59,7 +59,7 @@
     }
   };
 
-  BinarySearchTree.prototype.delete = function (key) {
+  BinarySearchTree.prototype.remove = function (key) {
     if (!this.root) {
       return false;
     }
@@ -117,7 +117,7 @@
     }
   };
 
-  BinarySearchTree.prototype.insert = function (key) {
+  BinarySearchTree.prototype.add = function (key) {
     var newNode = new Node(key);
 
     if (!this.root) {
