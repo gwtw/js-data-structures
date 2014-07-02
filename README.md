@@ -9,13 +9,13 @@ To learn more about how each data structure is implemented have a look at the [t
 
 ## Installing
 
-### Bower
+**Bower**
 
 ```
 bower install --save js-data-structures
 ```
 
-### NPM
+**NPM**
 
 ```
 npm install --save js-data-structures
@@ -23,13 +23,13 @@ npm install --save js-data-structures
 
 ## Including
 
-### Browser
+**Browser**
 
 ```javascript
 <script src="bower_components/js-data-structures/src/fibonacci-heap.js"></script>
 ```
 
-### Node.JS
+**Node.JS**
 
 ```javascript
 var FibonacciHeap = require("fibonacci-heap");
