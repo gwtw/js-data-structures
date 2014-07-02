@@ -230,8 +230,9 @@
   }
 
   function containsInternal(tree, key, node) {
-    if (key === node.key)
+    if (key === node.key) {
       return node;
+    }
 
     if (key < node.key) {
       if (!node.left) {
