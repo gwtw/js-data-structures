@@ -36,6 +36,37 @@
     }
   };
 
+  BinarySearchTree.prototype.add = function (key) {
+    var newNode = new Node(key);
+
+    if (!this.root) {
+      this.nodeCount++;
+      this.root = newNode;
+      return;
+    }
+
+    var current = this.root;
+    while (true) {
+      if (this.compare(key, current.key) < 0) {
+        if (!current.left) {
+          current.left = newNode;
+          this.nodeCount++;
+          return;
+        }
+        current = current.left;
+      } else if (this.compare(key, current.key) > 0) {
+        if (!current.right) {
+          current.right = newNode;
+          this.nodeCount++;
+          return;
+        }
+        current = current.right;
+      } else {
+        break;
+      }
+    }
+  };
+
   BinarySearchTree.prototype.contains = function (key) {
     if (!this.root) {
       return false;
@@ -54,34 +85,6 @@
         }
         current = current.right;
       } else {
-        return true;
-      }
-    }
-  };
-
-  BinarySearchTree.prototype.remove = function (key) {
-    if (!this.root) {
-      return false;
-    }
-
-    var parent;
-    var current = this.root;
-    while (true) {
-      if (this.compare(key, current.key) < 0) {
-        if (!current.left) {
-          return false;
-        }
-        parent = current;
-        current = current.left;
-      } else if (this.compare(key, current.key) > 0) {
-        if (!current.right) {
-          return false;
-        }
-        parent = current;
-        current = current.right;
-      } else {
-        this.nodeCount--;
-        deleteNode(current, parent);
         return true;
       }
     }
@@ -117,39 +120,36 @@
     }
   };
 
-  BinarySearchTree.prototype.add = function (key) {
-    var newNode = new Node(key);
+  BinarySearchTree.prototype.isEmpty = function () {
+    return !this.root;
+  };
 
+  BinarySearchTree.prototype.remove = function (key) {
     if (!this.root) {
-      this.nodeCount++;
-      this.root = newNode;
-      return;
+      return false;
     }
 
+    var parent;
     var current = this.root;
     while (true) {
       if (this.compare(key, current.key) < 0) {
         if (!current.left) {
-          current.left = newNode;
-          this.nodeCount++;
-          return;
+          return false;
         }
+        parent = current;
         current = current.left;
       } else if (this.compare(key, current.key) > 0) {
         if (!current.right) {
-          current.right = newNode;
-          this.nodeCount++;
-          return;
+          return false;
         }
+        parent = current;
         current = current.right;
       } else {
-        break;
+        this.nodeCount--;
+        deleteNode(current, parent);
+        return true;
       }
     }
-  };
-
-  BinarySearchTree.prototype.isEmpty = function () {
-    return !this.root;
   };
 
   BinarySearchTree.prototype.size = function () {
