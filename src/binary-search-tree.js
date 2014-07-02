@@ -1,16 +1,14 @@
 // Explanation: http://www.growingwiththeweb.com/2012/10/data-structures-binary-search-tree.html
 //
 // Complexity (n=input size):
-//  add:         O(n)*
-//  contains:    O(n)*
-//  findMaximum: O(n)*
-//  findMinimum: O(n)*
+//  add:         O(n), O(log n) average
+//  contains:    O(n), O(log n) average
+//  findMaximum: O(n), O(log n) average
+//  findMinimum: O(n), O(log n) average
 //  isEmpty:     Θ(1)
-//  remove:      O(n)*
+//  remove:      O(n), O(log n) average
 //  traverse*:   Θ(n)
 //  size:        Θ(1)
-//
-//  * O(log n) average case
 
 // UMD pattern: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
 (function (root, factory) {
