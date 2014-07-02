@@ -1,12 +1,12 @@
 // Explanation: http://www.growingwiththeweb.com/2012/10/data-structures-binary-search-tree.html
 //
 // Complexity (n=input size):
+//  add:         O(n)*
 //  contains:    O(n)*
-//  remove:      O(n)*
 //  findMaximum: O(n)*
 //  findMinimum: O(n)*
-//  add:         O(n)*
 //  isEmpty:     Θ(1)
+//  remove:      O(n)*
 //  traverse*:   Θ(n)
 //  size:        Θ(1)
 //
