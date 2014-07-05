@@ -3,7 +3,8 @@
   "version": "1.0.2",
   "description": "A collection of data structures written in JavaScript.",
   "devDependencies": {
-    "jasmine-node": "~1.14.3"
+    "jasmine-node": "~1.14.3",
+    "jasmine-reporters": ">=0.2.0 <2.0.0"
   },
   "scripts": {
     "test": "jasmine-node ."
