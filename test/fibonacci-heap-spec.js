@@ -62,5 +62,12 @@ describe("fibonacci-heap", function () {
       } while (node !== heap.minNode);
       expect(invalidCount).toBe(0);
     });
+
+    describe("calling extractMinimum twice", function () {
+      it("should return the correct elements", function () {
+        expect(heap.extractMinimum().key).toBe(0);
+        expect(heap.extractMinimum().key).toBe(1);
+      });
+    });
   });
 });
