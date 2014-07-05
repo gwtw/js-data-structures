@@ -1,8 +1,10 @@
 var HeapTests = require("./helpers/heap-tests");
+var HeapHeavyTests = require("./helpers/heap-heavy-tests");
 var FibonacciHeap = require("../src/fibonacci-heap");
 
 describe("fibonacci-heap", function () {
   HeapTests(FibonacciHeap);
+  HeapHeavyTests(FibonacciHeap);
 
   describe("calling insert 1000 times", function () {
     var heap;
