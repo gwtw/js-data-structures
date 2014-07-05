@@ -22,6 +22,70 @@ module.exports = function (Heap) {
         expect(ret.value).toEqual({ 'foo': 'bar' });
       });
     });
+
+    describe("when inserting 1000 in-order elements", function () {
+      beforeEach(function () {
+        for (var i = 0; i < 1000; i++) {
+          heap.insert(i, i);
+        }
+      });
+
+      describe("then extracting 1000 elements", function () {
+        beforeEach(function () {
+          for (var i = 0; i < 1000; i++) {
+            heap.extractMinimum();
+          }
+        });
+
+        it("should give an empty heap", function () {
+          expect(heap.isEmpty()).toBe(true);
+        });
+      });
+    });
+
+    describe("when inserting 1000 reversed elements", function () {
+      beforeEach(function () {
+        for (var i = 0; i < 1000; i++) {
+          heap.insert(i, i);
+        }
+      });
+
+      describe("then extracting 1000 elements", function () {
+        beforeEach(function () {
+          for (var i = 0; i < 1000; i++) {
+            heap.extractMinimum();
+          }
+        });
+
+        it("should give an empty heap", function () {
+          expect(heap.isEmpty()).toBe(true);
+        });
+      });
+    });
+
+    describe("when inserting 1000 psuedo-randomised elements", function () {
+      beforeEach(function () {
+        for (var i = 0; i < 1000; i++) {
+          if (i % 2 === 0) {
+            heap.insert(i, i);
+          } else {
+            heap.insert(999 - i, 999 - i);
+          }
+        }
+      });
+
+      describe("then extracting 1000 elements", function () {
+        beforeEach(function () {
+          for (var i = 0; i < 1000; i++) {
+            heap.extractMinimum();
+          }
+        });
+
+        it("should give an empty heap", function () {
+          expect(heap.isEmpty()).toBe(true);
+        });
+      });
+    });
   }
 
   if (Heap.prototype.extractMinimum) {
