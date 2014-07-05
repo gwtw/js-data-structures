@@ -90,6 +90,7 @@
     }
     var min = this.list[0];
     this.list[0] = this.list.pop();
+    this.list[0].i = 0;
     heapify(this, 0);
     return min;
   };
