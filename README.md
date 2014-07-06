@@ -62,6 +62,9 @@ I'd love to get some contributions for other data structures, if you want to mak
 ```
 npm install
 npm test
+
+# generate coverage report in ./coverage/
+grunt coverage
 ```
 
 ## See also

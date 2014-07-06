@@ -219,3 +219,4 @@ pip-log.txt
 *.sublime-workspace
 bower_components/
 node_modules/
+coverage/
