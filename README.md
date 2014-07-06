@@ -2,6 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/Tyriar/js-data-structures.png)](http://travis-ci.org/Tyriar/js-data-structures)
 [![Code Climate](https://codeclimate.com/github/Tyriar/js-data-structures.png)](https://codeclimate.com/github/Tyriar/js-data-structures)
+[![Code Climate](https://codeclimate.com/github/Tyriar/js-data-structures/coverage.png)](https://codeclimate.com/github/Tyriar/js-data-structures)
 
 A collection of data structures written in JavaScript. Each data structure is enclosed in its own file, wrapped in a [Universal Module Definition (UMD)][1] API to make it easier to use across multiple platforms.
 
