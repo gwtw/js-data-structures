@@ -37,11 +37,12 @@
     if (!this.root) {
       this.root = new Node(key);
       this.nodeCount++;
-      return;
+      return true;
     }
 
-    insertInternal(this, key, this.root);
+    var wasAdded = insertInternal(this, key, this.root);
     this.contains(key);
+    return wasAdded;
   };
 
   SplayTree.prototype.contains = function (key) {
@@ -212,21 +213,24 @@
   function insertInternal(tree, key, node) {
     if (key < node.key) {
       if (node.left) {
-        insertInternal(tree, key, node.left);
+        return insertInternal(tree, key, node.left);
       } else {
         node.left = new Node(key, node);
         tree.nodeCount++;
+        return true;
       }
     }
 
     if (key > node.key) {
       if (node.right) {
-        insertInternal(tree, key, node.right);
+        return insertInternal(tree, key, node.right);
       } else {
         node.right = new Node(key, node);
         tree.nodeCount++;
+        return true;
       }
     }
+    return false;
   }
 
   function containsInternal(tree, key, node) {
@@ -254,14 +258,14 @@
   function removeInternal(tree, key, node) {
     if (key < node.key) {
       if (node.left) {
-        return removeInternal(key, node.left);
+        return removeInternal(tree, key, node.left);
       }
       return false;
     }
 
     if (key > node.key) {
       if (node.right) {
-        return removeInternal(key, node.right);
+        return removeInternal(tree, key, node.right);
       }
       return false;
     }

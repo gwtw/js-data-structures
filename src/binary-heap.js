@@ -57,10 +57,10 @@
 
   BinaryHeap.prototype.decreaseKey = function (node, newKey) {
     if (typeof node === 'undefined') {
-      throw "Cannot decrease key of non-existant node";
+      throw "Cannot decrease key of non-existent node";
     }
     // Create a temp node for comparison
-    if (this.compare(new Node(newKey, undefined), node.key) > 0) {
+    if (this.compare({ key: newKey }, { key: node.key }) > 0) {
       throw "New key is larger than old key";
     }
 

@@ -18,43 +18,77 @@ module.exports = function (Tree) {
   });
 
   describe("remove", function () {
-    it("should remove left child elements", function () {
-      tree.add(2);
-      tree.add(1);
-      tree.add(3);
-      expect(tree.size()).toBe(3);
-      expect(tree.remove(2)).toBe(true);
-      expect(tree.size()).toBe(2);
+    describe("given a tree with 0 elements", function () {
+      it("should return false", function () {
+        expect(tree.remove(1)).toBe(false);
+      });
     });
 
-    it("should remove right child elements", function () {
-      tree.add(2);
-      tree.add(1);
-      tree.add(3);
-      expect(tree.size()).toBe(3);
-      expect(tree.remove(3)).toBe(true);
-      expect(tree.size()).toBe(2);
-    });
+    describe("given a tree with 3 elements", function () {
+      beforeEach(function () {
+        expect(tree.add(2)).toBe(true);
+        expect(tree.add(1)).toBe(true);
+        expect(tree.add(3)).toBe(true);
+        expect(tree.size()).toBe(3);
+      });
 
-    it("should not remove non-existant elements", function () {
-      tree.add(2);
-      tree.add(1);
-      tree.add(3);
-      expect(tree.size()).toBe(3);
-      expect(tree.remove(4)).toBe(false);
-      expect(tree.size()).toBe(3);
+      it("should remove left child elements", function () {
+        expect(tree.remove(2)).toBe(true);
+        expect(tree.size()).toBe(2);
+      });
+
+      it("should remove right child elements", function () {
+        expect(tree.remove(3)).toBe(true);
+        expect(tree.size()).toBe(2);
+      });
+
+      it("should not remove non-existant elements", function () {
+        expect(tree.remove(4)).toBe(false);
+        expect(tree.size()).toBe(3);
+      });
     });
   });
 
   describe("contains", function () {
-    it("should return an inserted element", function () {
-      tree.add(1);
-      expect(tree.contains(1)).toBe(true);
+    describe("given an empty tree", function () {
+      it("should return false", function () {
+        expect(tree.contains(1)).toBe(false);
+      });
     });
 
-    it("should not return a non-existant element", function () {
-      tree.add(1);
-      expect(tree.contains(2)).toBe(false);
+    describe("given a tree with 1 element", function () {
+      it("should return an inserted element", function () {
+        tree.add(1);
+        expect(tree.contains(1)).toBe(true);
+      });
+
+      it("should not return a non-existant element", function () {
+        tree.add(1);
+        expect(tree.contains(2)).toBe(false);
+      });
+    });
+
+    describe("given a tree with 7 elements", function () {
+      it("should return true for all existing elements", function () {
+        var i;
+        for (i = 0; i < 7; i++) {
+          tree.add(i);
+        }
+        for (i = 0; i < 7; i++) {
+          expect(tree.contains(i)).toBe(true);
+        }
+      });
+
+      it("should return false for non-existant elements", function () {
+        var i;
+        for (i = 0; i < 7; i++) {
+          tree.add(i);
+        }
+        expect(tree.contains(-10)).toBe(false);
+        expect(tree.contains(-1)).toBe(false);
+        expect(tree.contains(8)).toBe(false);
+        expect(tree.contains(10)).toBe(false);
+      });
     });
   });
 

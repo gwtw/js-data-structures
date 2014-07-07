@@ -40,9 +40,11 @@
   };
 
   FibonacciHeap.prototype.decreaseKey = function (node, newKey) {
-    // Create a temp node for comparison
-    if (this.compare(new Node(newKey, undefined), node.key) > 0) {
-      throw "New key is larger than old key.";
+    if (typeof node === 'undefined') {
+      throw "Cannot decrease key of non-existent node";
+    }
+    if (this.compare({ key: newKey }, { key: node.key }) > 0) {
+      throw "New key is larger than old key";
     }
 
     node.key = newKey;
