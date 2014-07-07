@@ -39,7 +39,7 @@
     if (!this.root) {
       this.nodeCount++;
       this.root = newNode;
-      return;
+      return true;
     }
 
     var current = this.root;
@@ -48,18 +48,18 @@
         if (!current.left) {
           current.left = newNode;
           this.nodeCount++;
-          return;
+          return true;
         }
         current = current.left;
       } else if (this.compare(key, current.key) > 0) {
         if (!current.right) {
           current.right = newNode;
           this.nodeCount++;
-          return;
+          return true;
         }
         current = current.right;
       } else {
-        break;
+        return false;
       }
     }
   };
@@ -143,7 +143,7 @@
         current = current.right;
       } else {
         this.nodeCount--;
-        deleteNode(current, parent);
+        deleteNode(current, parent, this);
         return true;
       }
     }
@@ -219,9 +219,13 @@
     return 0;
   };
 
-  function deleteNode(node, parent) {
+  function deleteNode(node, parent, tree) {
     if (!node.left && !node.right) {
-      parent.removeChild(node);
+      if (parent) {
+        parent.removeChild(node);
+      } else {
+        tree.root = undefined;
+      }
       return;
     }
 
@@ -241,10 +245,10 @@
     if (node.right && !node.left) {
       node.key = node.right.key;
       if (node.right.left) {
-        node.left = node.left.left;
+        node.left = node.right.left;
       }
       if (node.right.right) {
-        node.right = node.left.right;
+        node.right = node.right.right;
       } else {
         node.right = undefined;
       }

@@ -227,4 +227,44 @@ module.exports = function (Tree) {
       });
     });
   });
+
+  describe("with non-reverse customCompare", function () {
+    it("should be able to add and remove elements", function () {
+      tree = new Tree(function (a, b) {
+        return a - b;
+      });
+
+      expect(tree.add(4)).toBe(true);
+      expect(tree.add(1)).toBe(true);
+      expect(tree.add(3)).toBe(true);
+      expect(tree.add(4)).toBe(false);
+      expect(tree.add(2)).toBe(true);
+      expect(tree.remove(4)).toBe(true);
+      expect(tree.remove(4)).toBe(false);
+      expect(tree.remove(3)).toBe(true);
+      expect(tree.remove(1)).toBe(true);
+      expect(tree.remove(2)).toBe(true);
+      expect(tree.isEmpty());
+    });
+  });
+
+  describe("with reverse customCompare", function () {
+    it("should be able to add and remove elements", function () {
+      tree = new Tree(function (a, b) {
+        return b - a;
+      });
+
+      expect(tree.add(4)).toBe(true);
+      expect(tree.add(1)).toBe(true);
+      expect(tree.add(3)).toBe(true);
+      expect(tree.add(4)).toBe(false);
+      expect(tree.add(2)).toBe(true);
+      expect(tree.remove(4)).toBe(true);
+      expect(tree.remove(4)).toBe(false);
+      expect(tree.remove(3)).toBe(true);
+      expect(tree.remove(1)).toBe(true);
+      expect(tree.remove(2)).toBe(true);
+      expect(tree.isEmpty());
+    });
+  });
 };
