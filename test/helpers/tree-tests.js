@@ -8,11 +8,11 @@ module.exports = function (Tree) {
   describe("add", function () {
     it("Should insert elements", function () {
       expect(tree.size()).toBe(0);
-      tree.add(1);
+      expect(tree.add(1)).toBe(true);
       expect(tree.size()).toBe(1);
-      tree.add(2);
+      expect(tree.add(2)).toBe(true);
       expect(tree.size()).toBe(2);
-      tree.add(3);
+      expect(tree.add(3)).toBe(true);
       expect(tree.size()).toBe(3);
     });
   });
@@ -26,10 +26,9 @@ module.exports = function (Tree) {
 
     describe("given a tree with 3 elements", function () {
       beforeEach(function () {
-        expect(tree.add(2)).toBe(true);
-        expect(tree.add(1)).toBe(true);
-        expect(tree.add(3)).toBe(true);
-        expect(tree.size()).toBe(3);
+        tree.add(2);
+        tree.add(1);
+        tree.add(3);
       });
 
       it("should remove left child elements", function () {
@@ -45,6 +44,49 @@ module.exports = function (Tree) {
       it("should not remove non-existant elements", function () {
         expect(tree.remove(4)).toBe(false);
         expect(tree.size()).toBe(3);
+      });
+    });
+
+    describe("given a tree with 7 elements", function () {
+      beforeEach(function () {
+        // Insert to be balanced in most tree structures
+        tree.add(6);
+        tree.add(2);
+        tree.add(10);
+        tree.add(0);
+        tree.add(4);
+        tree.add(8);
+        tree.add(12);
+      });
+
+      it("should remove them all from highest to lowest", function () {
+        for (var i = 0; i <= 12; i += 2) {
+          expect(tree.remove(i)).toBe(true);
+        }
+        expect(tree.isEmpty()).toBe(true);
+      });
+
+      it("should remove them all from lowest to highest", function () {
+        for (var i = 0; i <= 12; i += 2) {
+          expect(tree.remove(i)).toBe(true);
+        }
+        expect(tree.isEmpty()).toBe(true);
+      });
+
+      it("should remove them all starting from the middle", function () {
+        for (var i = 0; i <= 12; i += 2) {
+          expect(tree.remove((i + 6) % 14)).toBe(true);
+        }
+        expect(tree.isEmpty()).toBe(true);
+      });
+
+      it("should not remove non-existent elements", function () {
+        for (var i = -1; i <= 13; i += 2) {
+          expect(tree.remove(i)).toBe(false);
+        }
+        expect(tree.remove(-50)).toBe(false);
+        expect(tree.remove(50)).toBe(false);
+        expect(tree.size()).toBe(7);
       });
     });
   });
@@ -69,25 +111,29 @@ module.exports = function (Tree) {
     });
 
     describe("given a tree with 7 elements", function () {
+      beforeEach(function () {
+        // Insert to be balanced in most tree structures
+        tree.add(6);
+        tree.add(2);
+        tree.add(10);
+        tree.add(0);
+        tree.add(4);
+        tree.add(8);
+        tree.add(12);
+      });
+
       it("should return true for all existing elements", function () {
-        var i;
-        for (i = 0; i < 7; i++) {
-          tree.add(i);
-        }
-        for (i = 0; i < 7; i++) {
+        for (var i = 0; i <= 12; i += 2) {
           expect(tree.contains(i)).toBe(true);
         }
       });
 
-      it("should return false for non-existant elements", function () {
-        var i;
-        for (i = 0; i < 7; i++) {
-          tree.add(i);
+      it("should return false for non-existent elements", function () {
+        for (var i = -1; i <= 13; i += 2) {
+          expect(tree.contains(i)).toBe(false);
         }
-        expect(tree.contains(-10)).toBe(false);
-        expect(tree.contains(-1)).toBe(false);
-        expect(tree.contains(8)).toBe(false);
-        expect(tree.contains(10)).toBe(false);
+        expect(tree.contains(-50)).toBe(false);
+        expect(tree.contains(50)).toBe(false);
       });
     });
   });

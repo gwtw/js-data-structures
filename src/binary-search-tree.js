@@ -266,7 +266,7 @@
       return node.key;
     }
 
-    return extractMinimum(node.getLeft(), node);
+    return extractMinimum(node.left, node);
   }
 
   function Node(key) {
