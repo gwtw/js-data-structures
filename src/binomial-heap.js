@@ -114,7 +114,8 @@
     var next = newHead.sibling;
 
     while (next) {
-      if (curr.degree !== next.degree || (next.sibling && next.sibling.degree === curr.degree)) {
+      if (curr.degree !== next.degree ||
+          (next.sibling && next.sibling.degree === curr.degree)) {
         prev = curr;
         curr = next;
       } else {

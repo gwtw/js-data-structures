@@ -41,10 +41,10 @@
 
   FibonacciHeap.prototype.decreaseKey = function (node, newKey) {
     if (typeof node === 'undefined') {
-      throw "Cannot decrease key of non-existent node";
+      throw 'Cannot decrease key of non-existent node';
     }
     if (this.compare({ key: newKey }, { key: node.key }) > 0) {
-      throw "New key is larger than old key";
+      throw 'New key is larger than old key';
     }
 
     node.key = newKey;
@@ -85,14 +85,17 @@
         } while (child !== extractedMin.child);
       }
 
-      var nextInRootList = (this.minNode.next === this.minNode ? undefined : this.minNode.next);
-
+      var nextInRootList;
+      if (this.minNode.next !== this.minNode) {
+        nextInRootList = this.minNode.next;
+      }
       // Remove min from root list
       removeNodeFromList(extractedMin);
       this.nodeCount--;
 
       // Merge the children of the minimum node with the root list
-      this.minNode = mergeLists(nextInRootList, extractedMin.child, this.compare);
+      this.minNode = mergeLists(nextInRootList, extractedMin.child,
+          this.compare);
       if (nextInRootList) {
         this.minNode = nextInRootList;
         this.minNode = consolidate(this.minNode, this.compare);

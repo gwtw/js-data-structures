@@ -39,7 +39,7 @@
   // completely discards the old heap.
   BinaryHeap.prototype.buildHeap = function (keyArray, valueArray) {
     if (keyArray.length !== valueArray.length) {
-      throw "Key array must be the same length as value array";
+      throw 'Key array must be the same length as value array';
     }
 
     var nodeArray = [];
@@ -57,11 +57,11 @@
 
   BinaryHeap.prototype.decreaseKey = function (node, newKey) {
     if (typeof node === 'undefined') {
-      throw "Cannot decrease key of non-existent node";
+      throw 'Cannot decrease key of non-existent node';
     }
     // Create a temp node for comparison
     if (this.compare({ key: newKey }, { key: node.key }) > 0) {
-      throw "New key is larger than old key";
+      throw 'New key is larger than old key';
     }
 
     node.key = newKey;
@@ -139,10 +139,12 @@
     var l = getLeft(i);
     var r = getRight(i);
     var smallest = i;
-    if (l < heap.list.length && heap.compare(heap.list[l], heap.list[i]) < 0) {
+    if (l < heap.list.length &&
+        heap.compare(heap.list[l], heap.list[i]) < 0) {
       smallest = l;
     }
-    if (r < heap.list.length && heap.compare(heap.list[r], heap.list[smallest]) < 0) {
+    if (r < heap.list.length &&
+        heap.compare(heap.list[r], heap.list[smallest]) < 0) {
       smallest = r;
     }
     if (smallest !== i) {

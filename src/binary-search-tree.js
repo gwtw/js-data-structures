@@ -198,7 +198,8 @@
       } else {
         var nextNode = parentStack[parentStack.length - 1];
         if (nextNode.right && lastVisitedNode !== nextNode.right) {
-          // if right child exists AND traversing node from left child, move right
+          // if right child exists AND traversing node from left child, move
+          // right
           node = nextNode.right;
         } else {
           parentStack.pop();
