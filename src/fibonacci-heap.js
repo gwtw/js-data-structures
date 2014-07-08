@@ -197,13 +197,13 @@
   }
 
   function removeNodeFromList(node) {
-      var prev = node.prev;
-      var next = node.next;
-      prev.next = next;
-      next.prev = prev;
+    var prev = node.prev;
+    var next = node.next;
+    prev.next = next;
+    next.prev = prev;
 
-      node.next = node;
-      node.prev = node;
+    node.next = node;
+    node.prev = node;
   }
 
   function linkHeaps(max, min, compare) {
