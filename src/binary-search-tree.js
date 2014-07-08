@@ -232,41 +232,33 @@
 
     if (node.left && !node.right) {
       node.key = node.left.key;
-      if (node.left.right) {
-        node.right = node.left.right;
-      }
-      if (node.left.left) {
-        node.left = node.left.left;
-      } else {
-        node.left = undefined;
-      }
+      node.right = node.left.right;
+      node.left = node.left.left;
       return;
     }
 
     if (node.right && !node.left) {
       node.key = node.right.key;
-      if (node.right.left) {
-        node.left = node.right.left;
-      }
-      if (node.right.right) {
-        node.right = node.right.right;
-      } else {
-        node.right = undefined;
-      }
+      node.left = node.right.left;
+      node.right = node.right.right;
       return;
     }
 
-    // both exist, replace with minimum from right sub-tree
-    node.key = extractMinimum(node.right, node);
+    // both exist, replace with node minimum from right sub-tree and delete the
+    // node from the right sub-tree
+    var minParent = findParentOfMinimum(node.right, node);
+    var minNode = minParent.left ? minParent.left : minParent.right;
+    var newKey = minNode.key;
+    deleteNode(minNode, minParent, tree);
+    node.key = newKey;
   }
 
-  function extractMinimum(node, parent) {
+  function findParentOfMinimum(node, parent) {
     if (!node.left) {
-      parent.removeChild(node);
-      return node.key;
+      return parent;
     }
 
-    return extractMinimum(node.left, node);
+    return findParentOfMinimum(node.left, node);
   }
 
   function Node(key) {
