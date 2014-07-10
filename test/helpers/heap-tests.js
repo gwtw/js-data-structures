@@ -227,26 +227,102 @@ module.exports = function (Heap) {
   }
 
   describe("union", function () {
-    it("should union two heaps together", function () {
-      heap.insert(9, null);
-      heap.insert(10, null);
-      heap.insert(6, null);
-      heap.insert(3, null);
-      heap.insert(4, null);
-      var other = new Heap();
-      other.insert(5, null);
-      other.insert(7, null);
-      other.insert(2, null);
-      other.insert(8, null);
-      other.insert(1, null);
-      expect(heap.size()).toBe(5);
-      expect(other.size()).toBe(5);
-      heap.union(other);
-      expect(heap.size()).toBe(10);
-      for (i = 1; i <= 10; i++) {
-        expect(heap.extractMinimum().key).toBe(i);
-      }
-      expect(heap.isEmpty()).toBe(true);
+    describe("given 2 heaps of size 5 with overlapping elements added in order together", function () {
+      var other;
+
+      beforeEach(function () {
+        heap.insert(0, null);
+        heap.insert(2, null);
+        heap.insert(4, null);
+        heap.insert(6, null);
+        heap.insert(8, null);
+        other = new Heap();
+        other.insert(1, null);
+        other.insert(3, null);
+        other.insert(5, null);
+        other.insert(7, null);
+        other.insert(9, null);
+        expect(heap.size()).toBe(5);
+        expect(other.size()).toBe(5);
+      });
+
+      it("should union the 2 heaps together", function () {
+        heap.union(other);
+        expect(heap.size()).toBe(10);
+        for (i = 0; i < 10; i++) {
+          expect(heap.extractMinimum().key).toBe(i);
+        }
+        expect(heap.isEmpty()).toBe(true);
+      });
+    });
+
+    describe("given 2 heaps of size 5 with overlapping elements added in reverse order together", function () {
+      var other;
+
+      beforeEach(function () {
+        heap.insert(9, null);
+        heap.insert(7, null);
+        heap.insert(5, null);
+        heap.insert(3, null);
+        heap.insert(1, null);
+        other = new Heap();
+        other.insert(8, null);
+        other.insert(6, null);
+        other.insert(4, null);
+        other.insert(2, null);
+        other.insert(0, null);
+        expect(heap.size()).toBe(5);
+        expect(other.size()).toBe(5);
+      });
+
+      it("should union the 2 heaps together", function () {
+        heap.union(other);
+        expect(heap.size()).toBe(10);
+        for (i = 0; i < 10; i++) {
+          expect(heap.extractMinimum().key).toBe(i);
+        }
+        expect(heap.isEmpty()).toBe(true);
+      });
+    });
+
+    describe("given 2 heaps of size 5 with overlapping elements added in jumbled order together", function () {
+      var other;
+
+      beforeEach(function () {
+        heap.insert(9, null);
+        heap.insert(2, null);
+        heap.insert(6, null);
+        heap.insert(1, null);
+        heap.insert(3, null);
+        other = new Heap();
+        other.insert(4, null);
+        other.insert(8, null);
+        other.insert(5, null);
+        other.insert(7, null);
+        other.insert(0, null);
+        expect(heap.size()).toBe(5);
+        expect(other.size()).toBe(5);
+      });
+
+      it("should union the 2 heaps together", function () {
+        heap.union(other);
+        expect(heap.size()).toBe(10);
+        for (i = 0; i < 10; i++) {
+          expect(heap.extractMinimum().key).toBe(i);
+        }
+        expect(heap.isEmpty()).toBe(true);
+      });
+
+      it("should union the 2 heaps together after extracting the minimum from each", function () {
+        expect(heap.extractMinimum().key).toBe(1);
+        expect(other.extractMinimum().key).toBe(0);
+        heap.union(other);
+        expect(heap.size()).toBe(8);
+        for (i = 2; i < 10; i++) {
+          expect(heap.extractMinimum().key).toBe(i);
+        }
+        expect(heap.isEmpty()).toBe(true);
+      });
     });
   });
 
