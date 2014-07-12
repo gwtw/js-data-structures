@@ -1,26 +1,28 @@
-var TreeTests = require("./helpers/tree-tests");
-var BinarySearchTree = require("../src/binary-search-tree");
+var treeTests = require('./helpers/tree-tests');
+var BinarySearchTree = require('../src/binary-search-tree');
 
-describe("binary-search-tree", function () {
+describe('binary-search-tree', function () {
+  'use strict';
+
   var tree;
 
   beforeEach(function () {
     tree = new BinarySearchTree();
   });
 
-  TreeTests(BinarySearchTree);
+  treeTests(BinarySearchTree);
 
-  describe("traversePreOrder", function () {
-    describe("given an empty tree", function () {
-      it("should not call the operation", function () {
-        tree.traversePreOrder(function (v) {
+  describe('traversePreOrder', function () {
+    describe('given an empty tree', function () {
+      it('should not call the operation', function () {
+        tree.traversePreOrder(function () {
           expect(true).toBe(false);
         });
       });
     });
 
-    describe("given a single element tree", function () {
-      it("should call the operation once for the correct element", function () {
+    describe('given a single element tree', function () {
+      it('should call the operation once for the correct element', function () {
         tree.add(1);
 
         var expectedOrder = [1];
@@ -31,8 +33,8 @@ describe("binary-search-tree", function () {
       });
     });
 
-    describe("given a balanced tree with height 2", function () {
-      it("should call the operation for the correct elements in the correct order", function () {
+    describe('given a balanced tree with height 2', function () {
+      it('should call the operation for the correct elements in the correct order', function () {
         tree.add(2);
         tree.add(1);
         tree.add(3);
@@ -45,8 +47,8 @@ describe("binary-search-tree", function () {
       });
     });
 
-    describe("given a balanced tree with height 3", function () {
-      it("should call the operation for the correct elements in the correct order", function () {
+    describe('given a balanced tree with height 3', function () {
+      it('should call the operation for the correct elements in the correct order', function () {
         tree.add(4);
         tree.add(2);
         tree.add(1);
@@ -64,17 +66,17 @@ describe("binary-search-tree", function () {
     });
   });
 
-  describe("traverseInOrder", function () {
-    describe("given an empty tree", function () {
-      it("should not call the operation", function () {
-        tree.traverseInOrder(function (v) {
+  describe('traverseInOrder', function () {
+    describe('given an empty tree', function () {
+      it('should not call the operation', function () {
+        tree.traverseInOrder(function () {
           expect(true).toBe(false);
         });
       });
     });
 
-    describe("given a single element tree", function () {
-      it("should call the operation once for the correct element", function () {
+    describe('given a single element tree', function () {
+      it('should call the operation once for the correct element', function () {
         tree.add(1);
 
         var expectedOrder = [1];
@@ -85,8 +87,8 @@ describe("binary-search-tree", function () {
       });
     });
 
-    describe("given a balanced tree with height 2", function () {
-      it("should call the operation for the correct elements in the correct order", function () {
+    describe('given a balanced tree with height 2', function () {
+      it('should call the operation for the correct elements in the correct order', function () {
         tree.add(2);
         tree.add(1);
         tree.add(3);
@@ -99,8 +101,8 @@ describe("binary-search-tree", function () {
       });
     });
 
-    describe("given a balanced tree with height 3", function () {
-      it("should call the operation for the correct elements in the correct order", function () {
+    describe('given a balanced tree with height 3', function () {
+      it('should call the operation for the correct elements in the correct order', function () {
         tree.add(4);
         tree.add(2);
         tree.add(1);
@@ -118,17 +120,17 @@ describe("binary-search-tree", function () {
     });
   });
 
-  describe("traversePostOrder", function () {
-    describe("given an empty tree", function () {
-      it("should not call the operation", function () {
-        tree.traversePreOrder(function (v) {
+  describe('traversePostOrder', function () {
+    describe('given an empty tree', function () {
+      it('should not call the operation', function () {
+        tree.traversePreOrder(function () {
           expect(true).toBe(false);
         });
       });
     });
 
-    describe("given a single element tree", function () {
-      it("should call the operation once for the correct element", function () {
+    describe('given a single element tree', function () {
+      it('should call the operation once for the correct element', function () {
         tree.add(1);
 
         var expectedOrder = [1];
@@ -139,8 +141,8 @@ describe("binary-search-tree", function () {
       });
     });
 
-    describe("given a balanced tree with height 2", function () {
-      it("should call the operation for the correct elements in the correct order", function () {
+    describe('given a balanced tree with height 2', function () {
+      it('should call the operation for the correct elements in the correct order', function () {
         tree.add(2);
         tree.add(1);
         tree.add(3);
@@ -153,8 +155,8 @@ describe("binary-search-tree", function () {
       });
     });
 
-    describe("given a balanced tree with height 3", function () {
-      it("should call the operation for the correct elements in the correct order", function () {
+    describe('given a balanced tree with height 3', function () {
+      it('should call the operation for the correct elements in the correct order', function () {
         tree.add(4);
         tree.add(2);
         tree.add(1);

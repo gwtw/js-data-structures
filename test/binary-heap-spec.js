@@ -1,8 +1,10 @@
-var HeapTests = require("./helpers/heap-tests");
-var HeapHeavyTests = require("./helpers/heap-heavy-tests");
-var BinaryHeap = require("../src/binary-heap");
+var heapTests = require('./helpers/heap-tests');
+var heapHeavyTests = require('./helpers/heap-heavy-tests');
+var BinaryHeap = require('../src/binary-heap');
 
-describe("binary-heap", function () {
-  HeapTests(BinaryHeap);
-  HeapHeavyTests(BinaryHeap);
+describe('binary-heap', function () {
+  'use strict';
+
+  heapTests(BinaryHeap);
+  heapHeavyTests(BinaryHeap);
 });

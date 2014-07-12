@@ -1,51 +1,53 @@
 module.exports = function (Heap) {
+  'use strict';
+
   var heap;
 
   beforeEach(function () {
     heap = new Heap();
   });
 
-  describe("when inserting 1000 in-order elements", function () {
+  describe('when inserting 1000 in-order elements', function () {
     beforeEach(function () {
       for (var i = 0; i < 1000; i++) {
         heap.insert(i, i);
       }
     });
 
-    describe("then extracting 1000 elements", function () {
+    describe('then extracting 1000 elements', function () {
       beforeEach(function () {
         for (var i = 0; i < 1000; i++) {
           heap.extractMinimum();
         }
       });
 
-      it("should give an empty heap", function () {
+      it('should give an empty heap', function () {
         expect(heap.isEmpty()).toBe(true);
       });
     });
   });
 
-  describe("when inserting 1000 reversed elements", function () {
+  describe('when inserting 1000 reversed elements', function () {
     beforeEach(function () {
       for (var i = 0; i < 1000; i++) {
         heap.insert(i, i);
       }
     });
 
-    describe("then extracting 1000 elements", function () {
+    describe('then extracting 1000 elements', function () {
       beforeEach(function () {
         for (var i = 0; i < 1000; i++) {
           heap.extractMinimum();
         }
       });
 
-      it("should give an empty heap", function () {
+      it('should give an empty heap', function () {
         expect(heap.isEmpty()).toBe(true);
       });
     });
   });
 
-  describe("when inserting 1000 pseudo-randomised elements", function () {
+  describe('when inserting 1000 pseudo-randomised elements', function () {
     beforeEach(function () {
       for (var i = 0; i < 1000; i++) {
         if (i % 2 === 0) {
@@ -56,19 +58,19 @@ module.exports = function (Heap) {
       }
     });
 
-    describe("then extracting 1000 elements", function () {
+    describe('then extracting 1000 elements', function () {
       beforeEach(function () {
         for (var i = 0; i < 1000; i++) {
           heap.extractMinimum();
         }
       });
 
-      describe("then extracting 1000 elements", function () {
+      describe('then extracting 1000 elements', function () {
         beforeEach(function () {
 
         });
 
-        it("should give an empty heap", function () {
+        it('should give an empty heap', function () {
           expect(heap.isEmpty()).toBe(true);
         });
       });
@@ -76,8 +78,8 @@ module.exports = function (Heap) {
   });
 
   if (Heap.prototype.decreaseKey) {
-    describe("when inserting, decreasing a key, then extracting", function () {
-      it("should be able to remove all elements", function () {
+    describe('when inserting, decreasing a key, then extracting', function () {
+      it('should be able to remove all elements', function () {
         var i;
         var nodes = [];
         for (i = 0; i < 1000; i++) {
@@ -97,8 +99,8 @@ module.exports = function (Heap) {
       });
     });
 
-    describe("when inserting, decreasing multiple keys, then extracting", function () {
-      it("should be able to remove all elements", function () {
+    describe('when inserting, decreasing multiple keys, then extracting', function () {
+      it('should be able to remove all elements', function () {
         var i;
         var nodes = [];
         for (i = 0; i < 1000; i++) {
@@ -121,13 +123,12 @@ module.exports = function (Heap) {
     });
   }
 
-  it("should handle 1000 shuffled elements", function () {
+  it('should handle 1000 shuffled elements', function () {
     var i;
     var input = [];
     for (i = 0; i < 1000; i++) {
       input.push(i);
     }
-    var expectedOutput = input.slice(0);
     // shuffle
     for (i = 0; i < 1000; i++) {
       var swapWith = Math.floor(Math.random() * 1000);
@@ -143,7 +144,6 @@ module.exports = function (Heap) {
     var output = [];
     var errorReported = false;
     var counter = 0;
-    var message = '';
     while (!heap.isEmpty()) {
       output.push(heap.extractMinimum().key);
       if (!errorReported && counter !== output[output.length - 1]) {

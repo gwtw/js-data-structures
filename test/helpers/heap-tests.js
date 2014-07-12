@@ -1,12 +1,14 @@
 module.exports = function (Heap) {
+  'use strict';
+  
   var heap;
 
   beforeEach(function () {
     heap = new Heap();
   });
 
-  describe("insert", function () {
-    it("should insert items into the heap", function () {
+  describe('insert', function () {
+    it('should insert items into the heap', function () {
       heap.insert(1, null);
       heap.insert(2, null);
       heap.insert(3, null);
@@ -15,21 +17,21 @@ module.exports = function (Heap) {
       expect(heap.size()).toBe(5);
     });
 
-    it("should return the inserted node", function () {
+    it('should return the inserted node', function () {
       var ret = heap.insert(1, { 'foo': 'bar' });
       expect(ret.key).toEqual(1);
       expect(ret.value).toEqual({ 'foo': 'bar' });
     });
   });
 
-  describe("extractMinimum", function () {
-    describe("given an empty heap",function () {
-      it("should return undefined", function () {
+  describe('extractMinimum', function () {
+    describe('given an empty heap',function () {
+      it('should return undefined', function () {
         expect(heap.extractMinimum()).not.toBeDefined();
       });
     });
 
-    it("should extract the minimum item from a heap", function () {
+    it('should extract the minimum item from a heap', function () {
       var node5 = heap.insert(5, null);
       var node3 = heap.insert(3, null);
       var node4 = heap.insert(4, null);
@@ -42,7 +44,7 @@ module.exports = function (Heap) {
       expect(heap.extractMinimum().key).toEqual(node5.key);
     });
 
-    it("should extract the minimum item from a jumbled heap", function () {
+    it('should extract the minimum item from a jumbled heap', function () {
       var node1 = heap.insert(1, null);
       var node4 = heap.insert(4, null);
       var node3 = heap.insert(3, null);
@@ -55,7 +57,7 @@ module.exports = function (Heap) {
       expect(heap.extractMinimum().key).toEqual(node5.key);
     });
 
-    it("should extract the minimum item from a heap containing negative items", function () {
+    it('should extract the minimum item from a heap containing negative items', function () {
       var node1 = heap.insert(-9, null);
       var node4 = heap.insert(6, null);
       var node3 = heap.insert(3, null);
@@ -69,8 +71,8 @@ module.exports = function (Heap) {
     });
   });
 
-  describe("findMinimum", function () {
-    it("should return the minimum item from the heap", function () {
+  describe('findMinimum', function () {
+    it('should return the minimum item from the heap', function () {
       heap.insert(5, null);
       heap.insert(3, null);
       heap.insert(1, null);
@@ -80,8 +82,8 @@ module.exports = function (Heap) {
     });
   });
 
-  describe("isEmpty", function () {
-    it("should return whether the heap is empty", function () {
+  describe('isEmpty', function () {
+    it('should return whether the heap is empty', function () {
       expect(heap.isEmpty()).toBe(true);
       heap.insert(1, null);
       expect(heap.isEmpty()).toBe(false);
@@ -92,35 +94,35 @@ module.exports = function (Heap) {
 
   // binomial heap does not implement
   if (Heap.prototype.decreaseKey) {
-    describe("decreaseKey", function () {
-      describe("given a non-existent node", function () {
-        it("should throw an exception", function () {
+    describe('decreaseKey', function () {
+      describe('given a non-existent node', function () {
+        it('should throw an exception', function () {
           expect(function () {
             heap.decreaseKey(undefined, 2);
-          }).toThrow("Cannot decrease key of non-existent node");
+          }).toThrow('Cannot decrease key of non-existent node');
         });
       });
 
-      describe("given a new key larger than the old key", function () {
-        it("should throw an exception", function () {
+      describe('given a new key larger than the old key', function () {
+        it('should throw an exception', function () {
           expect(function () {
             var node = heap.insert(1, null);
             heap.decreaseKey(node, 2);
-          }).toThrow("New key is larger than old key");
+          }).toThrow('New key is larger than old key');
         });
       });
 
-      it("should decrease the minimum node", function () {
+      it('should decrease the minimum node', function () {
         var node1 = heap.insert(1, null);
-        var node2 = heap.insert(2, null);
+        heap.insert(2, null);
         heap.decreaseKey(node1, -3);
         var key = heap.findMinimum().key;
         expect(key).toEqual(node1.key);
         expect(key).toBe(-3);
       });
 
-      it("should decrease and bubble up a non-minimum node", function () {
-        var node1 = heap.insert(1, null);
+      it('should decrease and bubble up a non-minimum node', function () {
+        heap.insert(1, null);
         var node2 = heap.insert(2, null);
         heap.decreaseKey(node2, -3);
         var key = heap.findMinimum().key;
@@ -128,30 +130,30 @@ module.exports = function (Heap) {
         expect(key).toEqual(-3);
       });
 
-      it("should decrease and bubble up a non-minimum node in a large heap", function () {
-        var node1 = heap.insert(13, null);
-        var node2 = heap.insert(26, null);
-        var node3 = heap.insert(3, null);
-        var node4 = heap.insert(-6, null);
+      it('should decrease and bubble up a non-minimum node in a large heap', function () {
+        heap.insert(13, null);
+        heap.insert(26, null);
+        heap.insert(3, null);
+        heap.insert(-6, null);
         var node5 = heap.insert(27, null);
-        var node6 = heap.insert(88, null);
-        var node7 = heap.insert(59, null);
-        var node8 = heap.insert(-10, null);
-        var node9 = heap.insert(16, null);
+        heap.insert(88, null);
+        heap.insert(59, null);
+        heap.insert(-10, null);
+        heap.insert(16, null);
         heap.decreaseKey(node5, -11);
         expect(heap.findMinimum().key).toEqual(node5.key);
       });
 
-      it("should leave a valid tree", function () {
-        var node1 = heap.insert(13, null);
-        var node2 = heap.insert(26, null);
-        var node3 = heap.insert(3, null);
-        var node4 = heap.insert(-6, null);
-        var node5 = heap.insert(27, null);
+      it('should leave a valid tree', function () {
+        heap.insert(13, null);
+        heap.insert(26, null);
+        heap.insert(3, null);
+        heap.insert(-6, null);
+        heap.insert(27, null);
         var node6 = heap.insert(88, null);
-        var node7 = heap.insert(59, null);
-        var node8 = heap.insert(-10, null);
-        var node9 = heap.insert(16, null);
+        heap.insert(59, null);
+        heap.insert(-10, null);
+        heap.insert(16, null);
         heap.decreaseKey(node6, -8);
         expect(heap.extractMinimum().key).toEqual(-10);
         expect(heap.extractMinimum().key).toEqual(-8);
@@ -168,8 +170,8 @@ module.exports = function (Heap) {
 
   // binomial heap does not implement
   if (Heap.prototype.delete) {
-    describe("delete", function () {
-      it("should delete the head of the heap", function () {
+    describe('delete', function () {
+      it('should delete the head of the heap', function () {
         var node1 = heap.insert(1, null);
         var node2 = heap.insert(2, null);
         heap.delete(node1);
@@ -177,7 +179,7 @@ module.exports = function (Heap) {
         expect(heap.isEmpty()).toBe(true);
       });
 
-      it("should delete a node in the middle of the heap", function () {
+      it('should delete a node in the middle of the heap', function () {
         var node3 = heap.insert(13, null);
         var node4 = heap.insert(26, null);
         var node2 = heap.insert(3, null);
@@ -197,17 +199,17 @@ module.exports = function (Heap) {
 
   // only binary search tree implements
   if (Heap.prototype.buildHeap) {
-    describe("buildHeap", function () {
-      describe("given invalid arguments", function () {
-        it("should throw an exception", function () {
+    describe('buildHeap', function () {
+      describe('given invalid arguments', function () {
+        it('should throw an exception', function () {
           expect(function () {
             heap.buildHeap([1, 2, 3], [4, 5]);
-          }).toThrow("Key array must be the same length as value array");
+          }).toThrow('Key array must be the same length as value array');
         });
       });
 
-      describe("given valid arguments", function () {
-        it("should replace old heap with new array", function () {
+      describe('given valid arguments', function () {
+        it('should replace old heap with new array', function () {
           heap.insert(2, null);
           heap.insert(3, null);
           heap.insert(1, null);
@@ -226,8 +228,8 @@ module.exports = function (Heap) {
     });
   }
 
-  describe("union", function () {
-    describe("given 2 heaps of size 5 with overlapping elements added in order together", function () {
+  describe('union', function () {
+    describe('given 2 heaps of size 5 with overlapping elements added in order together', function () {
       var other;
 
       beforeEach(function () {
@@ -246,7 +248,7 @@ module.exports = function (Heap) {
         expect(other.size()).toBe(5);
       });
 
-      it("should union the 2 heaps together", function () {
+      it('should union the 2 heaps together', function () {
         heap.union(other);
         expect(heap.size()).toBe(10);
         for (i = 0; i < 10; i++) {
@@ -256,7 +258,7 @@ module.exports = function (Heap) {
       });
     });
 
-    describe("given 2 heaps of size 5 with overlapping elements added in reverse order together", function () {
+    describe('given 2 heaps of size 5 with overlapping elements added in reverse order together', function () {
       var other;
 
       beforeEach(function () {
@@ -275,7 +277,7 @@ module.exports = function (Heap) {
         expect(other.size()).toBe(5);
       });
 
-      it("should union the 2 heaps together", function () {
+      it('should union the 2 heaps together', function () {
         heap.union(other);
         expect(heap.size()).toBe(10);
         for (i = 0; i < 10; i++) {
@@ -285,7 +287,7 @@ module.exports = function (Heap) {
       });
     });
 
-    describe("given 2 heaps of size 5 with overlapping elements added in jumbled order together", function () {
+    describe('given 2 heaps of size 5 with overlapping elements added in jumbled order together', function () {
       var other;
 
       beforeEach(function () {
@@ -304,7 +306,7 @@ module.exports = function (Heap) {
         expect(other.size()).toBe(5);
       });
 
-      it("should union the 2 heaps together", function () {
+      it('should union the 2 heaps together', function () {
         heap.union(other);
         expect(heap.size()).toBe(10);
         for (i = 0; i < 10; i++) {
@@ -313,7 +315,7 @@ module.exports = function (Heap) {
         expect(heap.isEmpty()).toBe(true);
       });
 
-      it("should union the 2 heaps together after extracting the minimum from each", function () {
+      it('should union the 2 heaps together after extracting the minimum from each', function () {
         expect(heap.extractMinimum().key).toBe(1);
         expect(other.extractMinimum().key).toBe(0);
         heap.union(other);
@@ -326,8 +328,8 @@ module.exports = function (Heap) {
     });
   });
 
-  describe("clear", function () {
-    it("should set the heap's size to 0", function () {
+  describe('clear', function () {
+    it('should set the heap\'s size to 0', function () {
       heap.insert(1, null);
       heap.insert(2, null);
       heap.insert(3, null);
@@ -335,7 +337,7 @@ module.exports = function (Heap) {
       expect(heap.size()).toBe(0);
     });
 
-    it("should set the heap's minimum node to undefined", function () {
+    it('should set the heap\'s minimum node to undefined', function () {
       heap.insert(1, null);
       heap.insert(2, null);
       heap.insert(3, null);
@@ -344,8 +346,8 @@ module.exports = function (Heap) {
     });
   });
 
-  describe("with non-reverse customCompare", function () {
-    it("should give a min heap", function () {
+  describe('with non-reverse customCompare', function () {
+    it('should give a min heap', function () {
       heap = new Heap(function (a, b) {
         return a.key - b.key;
       });
@@ -364,8 +366,8 @@ module.exports = function (Heap) {
     });
   });
 
-  describe("with reverse customCompare", function () {
-    it("should give a max heap", function () {
+  describe('with reverse customCompare', function () {
+    it('should give a max heap', function () {
       heap = new Heap(function (a, b) {
         return b.key - a.key;
       });
@@ -384,7 +386,7 @@ module.exports = function (Heap) {
     });
   });
 
-  it("should work with string keys", function () {
+  it('should work with string keys', function () {
     var node3 = heap.insert('f', null);
     var node4 = heap.insert('o', null);
     var node2 = heap.insert('c', null);

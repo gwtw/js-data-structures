@@ -1,12 +1,14 @@
-var HeapTests = require("./helpers/heap-tests");
-var HeapHeavyTests = require("./helpers/heap-heavy-tests");
-var FibonacciHeap = require("../src/fibonacci-heap");
+var heapTests = require('./helpers/heap-tests');
+var heapHeavyTests = require('./helpers/heap-heavy-tests');
+var FibonacciHeap = require('../src/fibonacci-heap');
 
-describe("fibonacci-heap", function () {
-  HeapTests(FibonacciHeap);
-  HeapHeavyTests(FibonacciHeap);
+describe('fibonacci-heap', function () {
+  'use strict';
 
-  describe("calling insert 1000 times", function () {
+  heapTests(FibonacciHeap);
+  heapHeavyTests(FibonacciHeap);
+
+  describe('calling insert 1000 times', function () {
     var heap;
 
     beforeEach(function () {
@@ -16,7 +18,7 @@ describe("fibonacci-heap", function () {
       }
     });
 
-    it("should have a nodelist of length 1000", function () {
+    it('should have a nodelist of length 1000', function () {
       var count = 0;
       var node = heap.minNode;
       do {
@@ -26,7 +28,7 @@ describe("fibonacci-heap", function () {
       expect(count).toBe(1000);
     });
 
-    it("should have a nodelist of length 1000 (searching backwards)", function () {
+    it('should have a nodelist of length 1000 (searching backwards)', function () {
       var count = 0;
       var node = heap.minNode;
       do {
@@ -36,7 +38,7 @@ describe("fibonacci-heap", function () {
       expect(count).toBe(1000);
     });
 
-    it("should have a nodelist with no parents or children", function () {
+    it('should have a nodelist with no parents or children', function () {
       var childCount = 0;
       var parentCount = 0;
       var node = heap.minNode;
@@ -53,7 +55,7 @@ describe("fibonacci-heap", function () {
       expect(parentCount).toBe(0);
     });
 
-    it("should contain correct key-value pairs", function () {
+    it('should contain correct key-value pairs', function () {
       var invalidCount = 0;
       var node = heap.minNode;
       do {
@@ -65,8 +67,8 @@ describe("fibonacci-heap", function () {
       expect(invalidCount).toBe(0);
     });
 
-    describe("calling extractMinimum twice", function () {
-      it("should return the correct elements", function () {
+    describe('calling extractMinimum twice', function () {
+      it('should return the correct elements', function () {
         expect(heap.extractMinimum().key).toBe(0);
         expect(heap.extractMinimum().key).toBe(1);
       });
