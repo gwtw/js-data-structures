@@ -212,7 +212,7 @@
   }
 
   function insertInternal(tree, key, node) {
-    if (key < node.key) {
+    if (tree.compare(key, node.key) < 0) {
       if (node.left) {
         return insertInternal(tree, key, node.left);
       } else {
@@ -222,7 +222,7 @@
       }
     }
 
-    if (key > node.key) {
+    if (tree.compare(key, node.key) > 0) {
       if (node.right) {
         return insertInternal(tree, key, node.right);
       } else {
@@ -231,6 +231,7 @@
         return true;
       }
     }
+
     return false;
   }
 
@@ -239,14 +240,14 @@
       return node;
     }
 
-    if (key < node.key) {
+    if (tree.compare(key, node.key) < 0) {
       if (!node.left) {
         return undefined;
       }
       return containsInternal(tree, key, node.left);
     }
 
-    if (key > node.key) {
+    if (tree.compare(key, node.key) > 0) {
       if (!node.right) {
         return undefined;
       }
@@ -257,14 +258,14 @@
   }
 
   function removeInternal(tree, key, node) {
-    if (key < node.key) {
+    if (tree.compare(key, node.key) < 0) {
       if (node.left) {
         return removeInternal(tree, key, node.left);
       }
       return false;
     }
 
-    if (key > node.key) {
+    if (tree.compare(key, node.key) > 0) {
       if (node.right) {
         return removeInternal(tree, key, node.right);
       }
