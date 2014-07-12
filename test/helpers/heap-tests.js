@@ -1,6 +1,6 @@
 module.exports = function (Heap) {
   'use strict';
-  
+
   var heap;
 
   beforeEach(function () {
@@ -251,7 +251,7 @@ module.exports = function (Heap) {
       it('should union the 2 heaps together', function () {
         heap.union(other);
         expect(heap.size()).toBe(10);
-        for (i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
           expect(heap.extractMinimum().key).toBe(i);
         }
         expect(heap.isEmpty()).toBe(true);
@@ -280,7 +280,7 @@ module.exports = function (Heap) {
       it('should union the 2 heaps together', function () {
         heap.union(other);
         expect(heap.size()).toBe(10);
-        for (i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
           expect(heap.extractMinimum().key).toBe(i);
         }
         expect(heap.isEmpty()).toBe(true);
@@ -309,7 +309,7 @@ module.exports = function (Heap) {
       it('should union the 2 heaps together', function () {
         heap.union(other);
         expect(heap.size()).toBe(10);
-        for (i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
           expect(heap.extractMinimum().key).toBe(i);
         }
         expect(heap.isEmpty()).toBe(true);
@@ -320,7 +320,7 @@ module.exports = function (Heap) {
         expect(other.extractMinimum().key).toBe(0);
         heap.union(other);
         expect(heap.size()).toBe(8);
-        for (i = 2; i < 10; i++) {
+        for (var i = 2; i < 10; i++) {
           expect(heap.extractMinimum().key).toBe(i);
         }
         expect(heap.isEmpty()).toBe(true);
