@@ -277,40 +277,17 @@
 
   function removeInternal2(tree, node) {
     if (!node.left && !node.right) {
-      if (node.parent) {
-        node.parent.removeChild(node);
-      } else {
-        tree.root = undefined;
-      }
-      tree.nodeCount--;
+      removeNodeWithNoChildren(tree, node);
       return true;
     }
 
     if (node.left && !node.right) {
-      node.key = node.left.key;
-      node.right = node.left.right;
-      if (node.right) {
-        node.right.parent = node;
-      }
-      node.left = node.left.left;
-      if (node.left) {
-        node.left.parent = node;
-      }
-      tree.nodeCount--;
+      removeNodeWithLeftOnly(tree, node);
       return true;
     }
 
     if (node.right && !node.left) {
-      node.key = node.right.key;
-      node.left = node.right.left;
-      if (node.left) {
-        node.left.parent = node;
-      }
-      node.right = node.right.right;
-      if (node.right) {
-        node.right.parent = node;
-      }
-      tree.nodeCount--;
+      removeNodeWithRightOnly(tree, node);
       return true;
     }
 
@@ -323,6 +300,41 @@
     node.key = newKey;
 
     return true;
+  }
+
+  function removeNodeWithNoChildren(tree, node) {
+    if (node.parent) {
+      node.parent.removeChild(node);
+    } else {
+      tree.root = undefined;
+    }
+    tree.nodeCount--;
+  }
+
+  function removeNodeWithLeftOnly(tree, node) {
+    node.key = node.left.key;
+    node.right = node.left.right;
+    if (node.right) {
+      node.right.parent = node;
+    }
+    node.left = node.left.left;
+    if (node.left) {
+      node.left.parent = node;
+    }
+    tree.nodeCount--;
+  }
+
+  function removeNodeWithRightOnly(tree, node) {
+    node.key = node.right.key;
+    node.left = node.right.left;
+    if (node.left) {
+      node.left.parent = node;
+    }
+    node.right = node.right.right;
+    if (node.right) {
+      node.right.parent = node;
+    }
+    tree.nodeCount--;
   }
 
   function splay(tree, node) {
