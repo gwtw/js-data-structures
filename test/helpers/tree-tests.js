@@ -31,17 +31,17 @@ module.exports = function (Tree) {
         tree.add(3);
       });
 
-      it("should remove root elements", function () {
+      it("should remove the first element", function () {
         expect(tree.remove(2)).toBe(true);
         expect(tree.size()).toBe(2);
       });
 
-      it("should remove left child elements", function () {
+      it("should remove the second element", function () {
         expect(tree.remove(1)).toBe(true);
         expect(tree.size()).toBe(2);
       });
 
-      it("should remove right child elements", function () {
+      it("should remove the third element", function () {
         expect(tree.remove(3)).toBe(true);
         expect(tree.size()).toBe(2);
       });

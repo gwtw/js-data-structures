@@ -275,40 +275,52 @@
   }
 
   function removeInternal2(tree, node) {
-    tree.nodeCount--;
     if (!node.left && !node.right) {
-      node.parent.removeChild(node);
+      if (node.parent) {
+        node.parent.removeChild(node);
+      } else {
+        tree.root = undefined;
+      }
+      tree.nodeCount--;
       return true;
     }
 
     if (node.left && !node.right) {
       node.key = node.left.key;
-      if (node.left.right) {
-        node.right = node.left.right;
+      node.right = node.left.right;
+      if (node.right) {
+        node.right.parent = node;
       }
-      if (node.left.left) {
-        node.left = node.left.left;
-      } else {
-        node.left = undefined;
+      node.left = node.left.left;
+      if (node.left) {
+        node.left.parent = node;
       }
+      tree.nodeCount--;
       return true;
     }
 
     if (node.right && !node.left) {
       node.key = node.right.key;
-      if (node.right.left) {
-        node.left = node.left.left;
+      node.left = node.right.left;
+      if (node.left) {
+        node.left.parent = node;
       }
-      if (node.right.right) {
-        node.right = node.left.right;
-      } else {
-        node.right = undefined;
+      node.right = node.right.right;
+      if (node.right) {
+        node.right.parent = node;
       }
+      tree.nodeCount--;
       return true;
     }
 
-    // both exist, replace with minimum from right sub-tree
-    node.key = extractMinimum(node.right, node);
+    // both exist, replace with node minimum from right sub-tree and delete the
+    // node from the right sub-tree
+    var minParent = findParentOfMinimum(node.right, node);
+    var minNode = minParent.left ? minParent.left : minParent.right;
+    var newKey = minNode.key;
+    removeInternal2(tree, minNode);
+    node.key = newKey;
+
     return true;
   }
 
@@ -340,13 +352,12 @@
     }
   }
 
-  function extractMinimum(node, parent) {
+  function findParentOfMinimum(node, parent) {
     if (!node.left) {
-      parent.left = undefined;
-      return node.key;
+      return parent;
     }
 
-    return extractMinimum(node.left, node);
+    return findParentOfMinimum(node.left, node);
   }
 
   function Node(key, parent) {
