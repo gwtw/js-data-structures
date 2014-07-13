@@ -1,15 +1,3 @@
-// Explanation: http://www.growingwiththeweb.com/2013/06/data-structure-splay-tree.html
-//
-// Complexity (n=input size):
-//  add:         O(log n) amortised
-//  contains:    O(log n) amortised
-//  findMaximum: O(n), O(log n) average
-//  findMinimum: O(n), O(log n) average
-//  isEmpty:     Θ(1)
-//  remove:      O(log n) amortised
-//  traverse*:   Θ(n)
-//  size:        Θ(1)
-
 (function (root, factory) {
   'use strict';
   if (typeof define === 'function' && define.amd) {

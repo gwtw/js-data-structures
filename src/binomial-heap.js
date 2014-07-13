@@ -1,14 +1,3 @@
-// Explanation: http://www.growingwiththeweb.com/2014/01/binomial-heap.html
-//
-// Complexity (n=input size):
-//   clear:          Θ(1)
-//   extractMinimum: Θ(log n)
-//   findMinimum:    O(log n) amortised
-//   insert:         O(log n)
-//   isEmpty:        Θ(1)
-//   size:           Θ(1)
-//   union:          Θ(log n)
-
 (function (root, factory) {
   'use strict';
   if (typeof define === 'function' && define.amd) {

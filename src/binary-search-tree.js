@@ -1,15 +1,3 @@
-// Explanation: http://www.growingwiththeweb.com/2012/10/data-structures-binary-search-tree.html
-//
-// Complexity (n=input size):
-//  add:         O(n), O(log n) average
-//  contains:    O(n), O(log n) average
-//  findMaximum: O(n), O(log n) average
-//  findMinimum: O(n), O(log n) average
-//  isEmpty:     Θ(1)
-//  remove:      O(n), O(log n) average
-//  traverse*:   Θ(n)
-//  size:        Θ(1)
-
 (function (root, factory) {
   'use strict';
   if (typeof define === 'function' && define.amd) {

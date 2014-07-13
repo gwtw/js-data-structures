@@ -1,17 +1,3 @@
-// Explanation: http://www.growingwiththeweb.com/2013/01/data-structure-binary-heap.html
-//
-// Complexity (n=input size):
-//   buildHeap:      Θ(n)
-//   clear:          Θ(1)
-//   decreaseKey:    Θ(log n)
-//   delete:         Θ(log n)
-//   extractMinimum: Θ(log n)
-//   findMinimum:    Θ(1)
-//   insert:         Θ(log n)
-//   isEmpty:        Θ(1)
-//   size:           Θ(1)
-//   union:          Θ(n)
-
 (function (root, factory) {
   'use strict';
   if (typeof define === 'function' && define.amd) {
