@@ -128,5 +128,20 @@ describe('fibonacci-heap', function () {
         expect(heap.minNode.next.key).toBe(3);
       });
     });
+
+    describe('calling delete on a node with children (the condition to cut)', function () {
+      beforeEach(function () {
+        heap.delete(node5, 3);
+      });
+
+      it('should retain the same minimum node', function () {
+        expect(heap.minNode.key).toBe(2);
+      });
+
+      it('should move its children on to the root list', function () {
+        expect(heap.minNode.prev.key).not.toBe(heap.minNode.key);
+        expect(heap.minNode.next.key).not.toBe(heap.minNode.key);
+      });
+    });
   });
 });
