@@ -22,7 +22,7 @@
 | [Binary search tree][d01_a] | [1][d01_1] | O(n)\*\*   | O(n)\*\*   | O(n)\*\*    | O(n)\*\*    | Θ(1)    | O(n)\*\*   | Θ(n)      | Θ(1) |
 | [Splay tree][d02_a]         | [1][d02_1] | O(log n)\* | O(log n)\* | O(n)\*\*    | O(n)\*\*    | Θ(1)    | O(log n)\* | Θ(n)      | Θ(1) |
 
-\* amortised
+\* amortised<br>
 \*\* O(log n) average
 
   [d01_a]: http://www.growingwiththeweb.com/2012/10/data-structures-binary-search-tree.html
