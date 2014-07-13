@@ -14,3 +14,18 @@
   [02_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/binomial-heap.js
   [03_a]: http://www.growingwiththeweb.com/2014/06/fibonacci-heap.html
   [03_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/fibonacci-heap.js
+
+## Trees
+
+| Algorithm                   | File       | add        | contains   | findMaximum | findMinimum | isEmpty | remove     | traverse* | size |
+|-----------------------------|------------|------------|------------|-------------|-------------|---------|------------|-----------|------|
+| [Binary search tree][d01_a] | [1][d01_1] | O(n)\*\*   | O(n)\*\*   | O(n)\*\*    | O(n)\*\*    | Θ(1)    | O(n)\*\*   | Θ(n)      | Θ(1) |
+| [Splay tree][d02_a]         | [1][d02_1] | O(log n)\* | O(log n)\* | O(n)\*\*    | O(n)\*\*    | Θ(1)    | O(log n)\* | Θ(n)      | Θ(1) |
+
+\* amortised
+\*\* O(log n) average
+
+  [d01_a]: http://www.growingwiththeweb.com/2012/10/data-structures-binary-search-tree.html
+  [d01_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/binary-search-tree.js
+  [d02_a]: http://www.growingwiththeweb.com/2013/06/data-structure-splay-tree.html
+  [d02_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/splay-tree.js
