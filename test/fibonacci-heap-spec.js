@@ -127,11 +127,15 @@ describe('fibonacci-heap', function () {
         expect(heap.minNode.prev.key).toBe(3);
         expect(heap.minNode.next.key).toBe(3);
       });
+
+      it('should not contain any cycles (regression test)', function () {
+        expect(heap.size()).toBe(8);
+      });
     });
 
     describe('calling delete on a node with children (the condition to cut)', function () {
       beforeEach(function () {
-        heap.delete(node5, 3);
+        heap.delete(node5);
       });
 
       it('should retain the same minimum node', function () {

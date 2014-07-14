@@ -132,6 +132,11 @@
   function cut(node, parent, minNode, compare) {
     removeNodeFromList(node);
     parent.degree--;
+    if (node.next === node) {
+      parent.child = undefined;
+    } else {
+      parent.child = node.next;
+    }
     minNode = mergeLists(minNode, node, compare);
     node.isMarked = false;
     return minNode;
