@@ -10,7 +10,7 @@ Detailed information on the complexity of each data structure is located [here][
 
 ## Installing
 
-```
+```bash
 # via bower
 bower install --save js-data-structures
 
