@@ -1,4 +1,4 @@
-# js-data-structures
+# js-data-structures [![NPM version](http://img.shields.io/npm/v/js-data-structures.svg?style=flat)](https://www.npmjs.org/package/js-data-structures)
 
 [![Build Status](http://img.shields.io/travis/Tyriar/js-data-structures.svg?style=flat)](http://travis-ci.org/Tyriar/js-data-structures)
 [![Code Climate](http://img.shields.io/codeclimate/github/Tyriar/js-data-structures.svg?style=flat)](https://codeclimate.com/github/Tyriar/js-data-structures)
