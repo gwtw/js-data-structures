@@ -10,15 +10,11 @@ Detailed information on the complexity of each data structure is located [here][
 
 ## Installing
 
-**Bower**
-
 ```
+# via bower
 bower install --save js-data-structures
-```
 
-**NPM**
-
-```
+# via npm
 npm install --save js-data-structures
 ```
 
