@@ -22,7 +22,7 @@ npm install --save js-data-structures
 
 **Browser**
 
-```javascript
+```html
 <script src="bower_components/js-data-structures/src/fibonacci-heap.js"></script>
 ```
 
@@ -56,7 +56,7 @@ I'd love to get some contributions for other data structures, if you want to mak
 
 ### Testing locally
 
-```
+```bash
 npm install
 npm test
 
