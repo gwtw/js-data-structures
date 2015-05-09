@@ -18,7 +18,7 @@
     "heap",
     "tree"
   ],
-  "license": "BSD-2-clause",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
