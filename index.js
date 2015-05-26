@@ -7,9 +7,9 @@
 'use strict';
 
 module.exports = {
-  BinaryHeap: require('./src/binary-heap'),
-  BinarySearchTree: require('./src/binary-search-tree'),
-  BinomialHeap: require('./src/binomial-heap'),
-  FibonacciHeap: require('./src/fibonacci-heap'),
-  SplayTree: require('./src/splay-tree'),
+  BinaryHeap: require('./lib/binary-heap'),
+  BinarySearchTree: require('./lib/binary-search-tree'),
+  BinomialHeap: require('./lib/binomial-heap'),
+  FibonacciHeap: require('./lib/fibonacci-heap'),
+  SplayTree: require('./lib/splay-tree'),
 };
