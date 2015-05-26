@@ -1,6 +1,6 @@
 var heapTests = require('./helpers/heap-tests');
 var heapHeavyTests = require('./helpers/heap-heavy-tests');
-var FibonacciHeap = require('../src/fibonacci-heap');
+var FibonacciHeap = require('../index').FibonacciHeap;
 
 describe('fibonacci-heap', function () {
   'use strict';

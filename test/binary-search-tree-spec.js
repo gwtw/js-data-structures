@@ -1,5 +1,5 @@
 var treeTests = require('./helpers/tree-tests');
-var BinarySearchTree = require('../src/binary-search-tree');
+var BinarySearchTree = require('../index').BinarySearchTree;
 
 describe('binary-search-tree', function () {
   'use strict';

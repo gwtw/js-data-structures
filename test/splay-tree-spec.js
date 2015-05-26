@@ -1,5 +1,5 @@
 var treeTests = require('./helpers/tree-tests');
-var SplayTree = require('../src/splay-tree');
+var SplayTree = require('../index').SplayTree;
 
 describe('splay-tree', function () {
   'use strict';
