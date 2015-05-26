@@ -11,5 +11,5 @@ addons:
 after_script:
   - npm install -g grunt-cli
   - npm install -g codeclimate-test-reporter
-  - grunt coverage
+  - grunt test
   - cat coverage/lcov.info | codeclimate

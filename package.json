@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "A collection of data structures written in JavaScript.",
   "scripts": {
-    "test": "jasmine-node ."
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",

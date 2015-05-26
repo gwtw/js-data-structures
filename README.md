@@ -11,25 +11,13 @@ Detailed information on the complexity of each data structure is located [here][
 ## Installing
 
 ```bash
-# via bower
-bower install --save js-data-structures
-
-# via npm
 npm install --save js-data-structures
 ```
 
 ## Including
 
-**Browser**
-
-```html
-<script src="bower_components/js-data-structures/src/fibonacci-heap.js"></script>
-```
-
-**Node.JS**
-
 ```javascript
-var FibonacciHeap = require("fibonacci-heap");
+var FibonacciHeap = require("js-data-structures").FibonacciHeap;
 ```
 
 ## Usage

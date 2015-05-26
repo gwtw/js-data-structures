@@ -28,11 +28,11 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('coverage', [
+  grunt.registerTask('test', [
     'jasmine_node:coverage'
   ]);
 
   grunt.registerTask('default', [
-    'coverage'
+    'test'
   ]);
 };

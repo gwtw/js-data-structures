@@ -1,7 +1,7 @@
 /**
  * @license
  * js-data-structures <http://github.com/Tyriar/js-data-structures>
- * Copyright 2014 Daniel Imms <http://www.growingwiththeweb.com>
+ * Copyright 2015 Daniel Imms <http://www.growingwiththeweb.com>
  * Released under the MIT license <http://github.com/Tyriar/js-data-structures/blob/master/LICENSE>
  */
 'use strict';
