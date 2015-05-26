@@ -5,6 +5,16 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json')
   });
 
+  grunt.loadNpmTasks('grunt-eslint');
+  grunt.config('eslint', {
+    dist: {
+      options: {
+        configFile: '.eslintrc',
+      },
+      src: ['lib/**/*.js']
+    }
+  });
+
   grunt.loadNpmTasks('grunt-jasmine-node-coverage');
   grunt.config('jasmine_node', {
     coverage: {
@@ -29,7 +39,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', [
-    'jasmine_node:coverage'
+    'eslint',
+    'jasmine_node'
   ]);
 
   grunt.registerTask('default', [
