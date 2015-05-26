@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "A collection of data structures written in JavaScript.",
   "scripts": {
-    "test": "grunt test"
+    "test": "jasmine-node ."
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,6 @@
   "homepage": "https://github.com/Tyriar/js-data-structures",
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.0",
-    "grunt-contrib-uglify": "^0.9.1",
     "grunt-jasmine-node-coverage": "^0.4.1",
     "jasmine-node": "^1.14.5",
     "jasmine-reporters": ">=0.2.0 <2.0.0"
