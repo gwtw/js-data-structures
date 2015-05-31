@@ -6,10 +6,18 @@
  */
 'use strict';
 
-module.exports = {
-  BinaryHeap: require('./lib/binary-heap'),
-  BinarySearchTree: require('./lib/binary-search-tree'),
-  BinomialHeap: require('./lib/binomial-heap'),
-  FibonacciHeap: require('./lib/fibonacci-heap'),
-  SplayTree: require('./lib/splay-tree'),
-};
+if (typeof exports === 'object' && typeof define !== 'function') {
+    var define = function (factory) {
+        factory(require, exports, module);
+    };
+}
+
+define(function (require, exports, module) {
+  module.exports = {
+    BinaryHeap: require('./lib/binary-heap'),
+    BinarySearchTree: require('./lib/binary-search-tree'),
+    BinomialHeap: require('./lib/binomial-heap'),
+    FibonacciHeap: require('./lib/fibonacci-heap'),
+    SplayTree: require('./lib/splay-tree'),
+  };
+});
