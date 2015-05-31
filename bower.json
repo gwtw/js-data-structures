@@ -5,10 +5,8 @@
   "authors": [
     "Daniel Imms (http://www.growingwiththeweb.com)"
   ],
-  "description": "A collection of data structures written in JavaScript.",
+  "description": "A collection of data structures",
   "moduleType": [
-    "amd",
-    "globals",
     "node"
   ],
   "keywords": [
