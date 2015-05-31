@@ -1,0 +1,29 @@
+{
+  "name": "js-data-structures",
+  "version": "1.0.3",
+  "homepage": "https://github.com/Tyriar/js-data-structures",
+  "authors": [
+    "Daniel Imms (http://www.growingwiththeweb.com)"
+  ],
+  "description": "A collection of data structures written in JavaScript.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "algorithm",
+    "computer science",
+    "data structure",
+    "heap",
+    "tree"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
