@@ -52,9 +52,19 @@ npm test
 grunt coverage
 ```
 
+
+
+## License
+
+MIT © [Daniel Imms](http://www.growingwiththeweb.com)
+
+
+
 ## See also
 
-* [Tyriar/js-sorting][4]
+* [js-design-patterns](https://github.com/Tyriar/js-design-patterns)
+* [js-interview-questions](https://github.com/Tyriar/js-interview-questions)
+* [js-sorting](https://github.com/Tyriar/js-sorting)
 
 
 
