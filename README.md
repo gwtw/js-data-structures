@@ -6,7 +6,7 @@
 
 A collection of data structures written in JavaScript. Each data structure is enclosed in its own file, wrapped in a [Universal Module Definition (UMD)][1] API to make it easier to use across multiple platforms.
 
-Detailed information on the complexity of each data structure is located [here][6]. To learn more about how some of the data structures are implemented, have a look at the [technical articles on my blog][2].
+Detailed information on the complexity of each data structure is located [here][3]. To learn more about how some of the data structures are implemented, have a look at the [technical articles on my blog][2].
 
 ## Installing
 
@@ -70,7 +70,6 @@ MIT © [Daniel Imms](http://www.growingwiththeweb.com)
 
   [1]: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
   [2]: http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure
-  [3]: https://github.com/Tyriar/js-data-structures/tree/master/src
+  [3]: lib
   [4]: https://github.com/Tyriar/js-sorting
-  [5]: https://github.com/Tyriar/js-data-structures/blob/master/src/fibonacci-heap.js
-  [6]: https://github.com/Tyriar/js-data-structures/tree/master/src
+  [5]: lib/fibonacci-heap.js
