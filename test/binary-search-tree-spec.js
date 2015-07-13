@@ -4,13 +4,13 @@ var BinarySearchTree = require('../index').BinarySearchTree;
 describe('binary-search-tree', function () {
   'use strict';
 
+  treeTests(BinarySearchTree);
+
   var tree;
 
   beforeEach(function () {
     tree = new BinarySearchTree();
   });
-
-  treeTests(BinarySearchTree);
 
   describe('traversePreOrder', function () {
     describe('given an empty tree', function () {

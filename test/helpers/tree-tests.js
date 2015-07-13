@@ -8,7 +8,13 @@ module.exports = function (Tree) {
   });
 
   describe('add', function () {
-    it('Should insert elements', function () {
+    it('Should insert a single element', function () {
+      expect(tree.size()).toBe(0);
+      expect(tree.add(1)).toBe(true);
+      expect(tree.size()).toBe(1);
+    });
+
+    it('Should insert multiple elements', function () {
       expect(tree.size()).toBe(0);
       expect(tree.add(1)).toBe(true);
       expect(tree.size()).toBe(1);
