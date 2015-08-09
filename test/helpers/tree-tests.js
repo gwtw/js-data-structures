@@ -73,7 +73,7 @@ module.exports = function (Tree) {
       });
 
       it('should remove them all from highest to lowest', function () {
-        for (var i = 0; i <= 12; i += 2) {
+        for (var i = 12; i >= 0; i -= 2) {
           expect(tree.remove(i)).toBe(true);
         }
         expect(tree.isEmpty()).toBe(true);
