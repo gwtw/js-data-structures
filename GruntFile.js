@@ -38,12 +38,20 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('test', [
-    'eslint',
-    'jasmine_node'
-  ]);
+  grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.config('jsdoc', {
+    dist : {
+      src: ['index.js', 'lib/**/*.js'],
+      options: {
+        destination: 'doc',
+        readme: 'README.md'
+      }
+    }
+  });
 
   grunt.registerTask('default', [
-    'test'
+    'eslint',
+    'jsdoc',
+    'jasmine_node'
   ]);
 };
