@@ -3,8 +3,6 @@
     'node': true
   },
   'rules': {
-    'quotes': [1, 'single'],
-    'no-use-before-define': false,
-    'no-constant-condition': false
+    'quotes': [1, 'single']
   }
 }
