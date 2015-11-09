@@ -15,7 +15,7 @@ define(function (require, exports, module) {
     BinaryHeap: require('./lib/binary-heap'),
     BinarySearchTree: require('./lib/binary-search-tree'),
     BinomialHeap: require('./lib/binomial-heap'),
-    FibonacciHeap: require('./lib/fibonacci-heap'),
+    FibonacciHeap: require('@tyriar/fibonacci-heap'),
     RedBlackTree: require('./lib/red-black-tree'),
     SplayTree: require('./lib/splay-tree'),
   };
