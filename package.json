@@ -31,7 +31,7 @@
     "jasmine-reporters": ">=0.2.0 <2.0.0"
   },
   "dependencies": {
-    "@tyriar/binary-heap": "^0.1.0",
+    "@tyriar/binary-heap": "^1.0.0",
     "@tyriar/fibonacci-heap": "^1.0.0"
   }
 }
