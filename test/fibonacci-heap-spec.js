@@ -1,7 +1,7 @@
 describe('fibonacci-heap', function () {
   'use strict';
 
-  it('it defined', function () {
+  it('is defined', function () {
     expect(require('../index').FibonacciHeap).toBeDefined();
   });
 });

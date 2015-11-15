@@ -12,7 +12,7 @@ if (typeof exports === 'object' && typeof define !== 'function') {
 
 define(function (require, exports, module) {
   module.exports = {
-    BinaryHeap: require('./lib/binary-heap'),
+    BinaryHeap: require('@tyriar/binary-heap'),
     BinarySearchTree: require('./lib/binary-search-tree'),
     BinomialHeap: require('./lib/binomial-heap'),
     FibonacciHeap: require('@tyriar/fibonacci-heap'),
