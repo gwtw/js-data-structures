@@ -4,7 +4,7 @@
 [![Code Climate](http://img.shields.io/codeclimate/github/Tyriar/js-data-structures.svg?style=flat)](https://codeclimate.com/github/Tyriar/js-data-structures)
 [![Code coverage](http://img.shields.io/codeclimate/coverage/github/Tyriar/js-data-structures.svg?style=flat)](https://codeclimate.com/github/Tyriar/js-data-structures)
 
-A collection of data structures written in JavaScript. Each data structure is enclosed in its own file, wrapped in a [Universal Module Definition (UMD)][1] API to make it easier to use across multiple platforms.
+A collection of data structures written in JavaScript.
 
 Detailed information on the complexity of each data structure is located [here][3]. To learn more about how some of the data structures are implemented, have a look at the [technical articles on my blog][2].
 
@@ -68,7 +68,6 @@ MIT © [Daniel Imms](http://www.growingwiththeweb.com)
 
 
 
-  [1]: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
   [2]: http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure
   [3]: lib
   [4]: https://github.com/Tyriar/js-sorting
