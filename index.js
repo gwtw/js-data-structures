@@ -14,7 +14,7 @@ define(function (require, exports, module) {
   module.exports = {
     BinaryHeap: require('@tyriar/binary-heap'),
     BinarySearchTree: require('./lib/binary-search-tree'),
-    BinomialHeap: require('./lib/binomial-heap'),
+    BinomialHeap: require('@tyriar/binomial-heap'),
     FibonacciHeap: require('@tyriar/fibonacci-heap'),
     RedBlackTree: require('./lib/red-black-tree'),
     SplayTree: require('./lib/splay-tree'),

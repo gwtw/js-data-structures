@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@tyriar/binary-heap": "^1.0.0",
+    "@tyriar/binomial-heap": "^1.0.0",
     "@tyriar/fibonacci-heap": "^1.0.0"
   }
 }
