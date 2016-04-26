@@ -1,8 +1,8 @@
 {
-  'env': {
-    'node': true
+  "env": {
+    "node": true
   },
-  'rules': {
-    'quotes': [1, 'single']
+  "rules": {
+    "quotes": [1, "single"]
   }
 }
