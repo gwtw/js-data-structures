@@ -1,6 +1,6 @@
 {
   "name": "js-data-structures",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A collection of data structures",
   "scripts": {
     "test": "jasmine-node ."
