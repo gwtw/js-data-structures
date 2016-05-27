@@ -9,11 +9,11 @@
 \* amortised
 
   [01_a]: http://www.growingwiththeweb.com/2014/02/bubble-sort.html
-  [01_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/binary-heap.js
+  [01_1]: https://github.com/GrowingWithTheWeb/js-data-structures/blob/master/src/binary-heap.js
   [02_a]: http://www.growingwiththeweb.com/2014/01/binomial-heap.html
-  [02_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/binomial-heap.js
+  [02_1]: https://github.com/GrowingWithTheWeb/js-data-structures/blob/master/src/binomial-heap.js
   [03_a]: http://www.growingwiththeweb.com/2014/06/fibonacci-heap.html
-  [03_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/fibonacci-heap.js
+  [03_1]: https://github.com/GrowingWithTheWeb/js-data-structures/blob/master/src/fibonacci-heap.js
 
 ## Trees
 
@@ -26,6 +26,6 @@
 \*\* O(log n) average
 
   [d01_a]: http://www.growingwiththeweb.com/2012/10/data-structures-binary-search-tree.html
-  [d01_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/binary-search-tree.js
+  [d01_1]: https://github.com/GrowingWithTheWeb/js-data-structures/blob/master/src/binary-search-tree.js
   [d02_a]: http://www.growingwiththeweb.com/2013/06/data-structure-splay-tree.html
-  [d02_1]: https://github.com/Tyriar/js-data-structures/blob/master/src/splay-tree.js
+  [d02_1]: https://github.com/GrowingWithTheWeb/js-data-structures/blob/master/src/splay-tree.js

@@ -1,8 +1,8 @@
 # js-data-structures [![NPM version](http://img.shields.io/npm/v/js-data-structures.svg?style=flat)](https://www.npmjs.org/package/js-data-structures)
 
-[![Build Status](http://img.shields.io/travis/Tyriar/js-data-structures.svg?style=flat)](http://travis-ci.org/Tyriar/js-data-structures)
-[![Code Climate](http://img.shields.io/codeclimate/github/Tyriar/js-data-structures.svg?style=flat)](https://codeclimate.com/github/Tyriar/js-data-structures)
-[![Code coverage](http://img.shields.io/codeclimate/coverage/github/Tyriar/js-data-structures.svg?style=flat)](https://codeclimate.com/github/Tyriar/js-data-structures)
+[![Build Status](http://img.shields.io/travis/GrowingWithTheWeb/js-data-structures.svg?style=flat)](http://travis-ci.org/GrowingWithTheWeb/js-data-structures)
+[![Code Climate](http://img.shields.io/codeclimate/github/GrowingWithTheWeb/js-data-structures.svg?style=flat)](https://codeclimate.com/github/GrowingWithTheWeb/js-data-structures)
+[![Code coverage](http://img.shields.io/codeclimate/coverage/github/GrowingWithTheWeb/js-data-structures.svg?style=flat)](https://codeclimate.com/github/GrowingWithTheWeb/js-data-structures)
 
 A collection of data structures written in JavaScript.
 
@@ -62,13 +62,13 @@ MIT © [Daniel Imms](http://www.growingwiththeweb.com)
 
 ## See also
 
-* [js-design-patterns](https://github.com/Tyriar/js-design-patterns)
-* [js-interview-questions](https://github.com/Tyriar/js-interview-questions)
-* [js-sorting](https://github.com/Tyriar/js-sorting)
+* [js-design-patterns](https://github.com/GrowingWithTheWeb/js-design-patterns)
+* [js-interview-questions](https://github.com/GrowingWithTheWeb/js-interview-questions)
+* [js-sorting](https://github.com/GrowingWithTheWeb/js-sorting)
 
 
 
   [2]: http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure
   [3]: lib
-  [4]: https://github.com/Tyriar/js-sorting
+  [4]: https://github.com/GrowingWithTheWeb/js-sorting
   [5]: lib/fibonacci-heap.js
