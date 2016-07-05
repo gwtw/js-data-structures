@@ -1,8 +1,6 @@
 # js-data-structures [![NPM version](http://img.shields.io/npm/v/js-data-structures.svg?style=flat)](https://www.npmjs.org/package/js-data-structures)
 
 [![Build Status](http://img.shields.io/travis/gwtw/js-data-structures.svg?style=flat)](http://travis-ci.org/gwtw/js-data-structures)
-[![Code Climate](http://img.shields.io/codeclimate/github/gwtw/js-data-structures.svg?style=flat)](https://codeclimate.com/github/gwtw/js-data-structures)
-[![Code coverage](http://img.shields.io/codeclimate/coverage/github/gwtw/js-data-structures.svg?style=flat)](https://codeclimate.com/github/gwtw/js-data-structures)
 
 A collection of data structures written in JavaScript.
 
