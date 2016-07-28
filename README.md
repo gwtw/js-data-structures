@@ -1,6 +1,6 @@
-# js-data-structures [![NPM version](http://img.shields.io/npm/v/js-data-structures.svg?style=flat)](https://www.npmjs.org/package/js-data-structures)
+# js-data-structures
 
-[![Build Status](http://img.shields.io/travis/gwtw/js-data-structures.svg?style=flat)](http://travis-ci.org/gwtw/js-data-structures)
+[![Build Status](https://travis-ci.org/gwtw/js-data-structures.svg?branch=master)](http://travis-ci.org/gwtw/js-data-structures)
 
 A collection of data structures written in JavaScript.
 
