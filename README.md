@@ -4,7 +4,7 @@
 
 A collection of data structures written in JavaScript.
 
-Detailed information on the complexity of each data structure is located [here][3]. To learn more about how some of the data structures are implemented, have a look at the [technical articles on my blog][2].
+Detailed information on the complexity of each data structure is located [here][3]. To learn more about how some of the data structures are implemented, check out the [technical articles on Growing with the Web](http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure)..
 
 ## Installing
 
@@ -66,7 +66,6 @@ MIT © [Daniel Imms](http://www.growingwiththeweb.com)
 
 
 
-  [2]: http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure
   [3]: lib
   [4]: https://github.com/gwtw/js-sorting
   [5]: lib/fibonacci-heap.js
