@@ -12,6 +12,7 @@ if (typeof exports === 'object' && typeof define !== 'function') {
 
 define(function (require, exports, module) {
   module.exports = {
+    AvlTree: require('@tyriar/avl-tree'),
     BinaryHeap: require('@tyriar/binary-heap'),
     BinarySearchTree: require('./lib/binary-search-tree'),
     BinomialHeap: require('@tyriar/binomial-heap'),
