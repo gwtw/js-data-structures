@@ -15,7 +15,13 @@ npm install --save js-data-structures
 ## Including
 
 ```javascript
-var FibonacciHeap = require("js-data-structures").FibonacciHeap;
+var AvlTree = require('js-data-structures').AvlTree;
+var BinaryHeap = require('js-data-structures').BinaryHeap;
+var BinarySearchTree = require('js-data-structures').BinarySearchTree;
+var BinomialHeap = require('js-data-structures').BinomialHeap;
+var FibonacciHeap = require('js-data-structures').FibonacciHeap;
+var RedBlackTree = require('js-data-structures').RedBlackTree;
+var SplayTree = require('js-data-structures').SplayTree;
 ```
 
 ## Usage
