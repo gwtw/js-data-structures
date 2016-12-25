@@ -4,7 +4,7 @@
 
 A collection of data structures written in JavaScript.
 
-Detailed information on the complexity of each data structure is located [here][3]. To learn more about how some of the data structures are implemented, check out the [technical articles on Growing with the Web](http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure)..
+Detailed information on the complexity of each data structure is located [here](lib). To learn more about how some of the data structures are implemented, check out the [technical articles on Growing with the Web](http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure).
 
 ## Installing
 
@@ -26,7 +26,7 @@ var SplayTree = require('js-data-structures').SplayTree;
 
 ## Usage
 
-See [the source files][3] for a list of public interfaces on each data structure, here is an example for the [Fibonacci heap][5].
+See [the source files](lib) and [`dependencies` in package.json](https://github.com/gwtw/js-data-structures/blob/master/package.json) for a list of public interfaces on each data structure, here is an example for the [Fibonacci heap](https://github.com/gwtw/js-fibonacci-heap).
 
 ```javascript
 var heap = new FibonacciHeap();
@@ -69,9 +69,3 @@ MIT © [Daniel Imms](http://www.growingwiththeweb.com)
 * [js-design-patterns](https://github.com/gwtw/js-design-patterns)
 * [js-interview-questions](https://github.com/gwtw/js-interview-questions)
 * [js-sorting](https://github.com/gwtw/js-sorting)
-
-
-
-  [3]: lib
-  [4]: https://github.com/gwtw/js-sorting
-  [5]: lib/fibonacci-heap.js
